@@ -379,10 +379,10 @@
                                 <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-dashboard"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
-								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-anchor"></i><span class="hide-menu">Shippings</span></a>
+								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Katalog Buku</span></a>
 								<ul aria-expanded="false" class="collapse">
-									<li><a href="#">Tambah Shipping Baru</a></li>
-									<li><a href="#"> List Shipping</a></li>
+									<li><a href="#">Tambah Buku Baru</a></li>
+									<li><a href="#">List Buku</a></li>
 
 								</ul>
 							</li>
@@ -406,74 +406,34 @@
                                 </ul>
                             </li> --}}
                         </ul>
-                    @elseif(Sentinel::getUser()->roles()->first()->slug == 'bapenda')
-                        <ul id="sidebarnav">
-                            <li class="nav-small-cap">Bapenda</li>
-                            <li>
-                                <a href="{{ route('bapenda.dashboard')}}" aria-expanded="false"><i class="fa fa-dashboard"></i><span class="hide-menu">Dashboard</span></a>
-                            </li>
-                            {{-- <li>
-                                <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
-                                <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis by Photo</a></li>
-                                    <li><a href="{{ route('doctor.diagnosis.add1')}}"> Add Diagnosis by System</a></li>
-                                    <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
-                                </ul>
-                            </li> --}}
-
-                            <li>
-                                <a href="{{ route('bapenda.client.list')}}" aria-expanded="false"><i class="fa fa-vcard"></i><span class="hide-menu">Daftar Perusahaan <br>Tambang</span></a>
-                            </li>
-                        </ul>
                     @elseif(Sentinel::getUser()->roles()->first()->slug == 'mahasiswa')
-                    <ul id="sidebarnav">
-                        <li class="nav-small-cap">MAHASISWA</li>
-                        <li>
-                            <a href="{{ route('mahasiswa.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
-                        </li>
-                    </ul>
-                    @elseif(Sentinel::getUser()->roles()->first()->slug == 'healthAnalyst')
                         <ul id="sidebarnav">
-                            <li class="nav-small-cap">HEALTH ANALYST</li>
+                            <li class="nav-small-cap">MAHASISWA</li>
                             <li>
-                                <a href="{{ route('healthAnalyst.dashboard')}}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
+                                <a href="{{ route('mahasiswa.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
-                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-bar-chart-o"></i><span class="hide-menu">Result Lab</span></a>
-                                <ul aria-expanded="false" class="collapse">
-                                    @php ($onPatientList = 0)
-                                    <li><a href="{{ route('healthAnalyst.resultLab.create')}}">Add Result Lab</a></li>
-                                    <li><a href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}">List Result Lab</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                @php ($onPatientList = 1)
-                                <a  href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}"><i class="fa fa-address-book-o"></i>Patients</a>
-                                {{-- <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
-                                <ul aria-expanded="false" class="collapse">
-                                    @php ($onPatientList = 1)
-                                    <li><a href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}">List Patients</a></li>
-                                </ul> --}}
-                            </li>
+								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Rekomendasi Buku</span></a>
+								<ul aria-expanded="false" class="collapse">
+									<li><a href="#">Rekomendasi Baru</a></li>
+									<li><a href="#">List Rekomendasi</a></li>
 
-
-                            <li>
-                                {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
-                                <ul aria-expanded="false" class="collapse">
-                                    <li><a href="javascript:void(0)">item 1.1</a></li>
-                                    <li><a href="javascript:void(0)">item 1.2</a></li>
-                                    <li>
-                                        <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
-                                        <ul aria-expanded="false" class="collapse">
-                                            <li><a href="javascript:void(0)">item 1.3.1</a></li>
-                                            <li><a href="javascript:void(0)">item 1.3.2</a></li>
-                                            <li><a href="javascript:void(0)">item 1.3.3</a></li>
-                                            <li><a href="javascript:void(0)">item 1.3.4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">item 1.4</a></li>
-                                </ul>
+								</ul>
                             </li>
+                            <li>
+								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-check-square-o "></i><span class="hide-menu">Voting Buku</span></a>
+								<ul aria-expanded="false" class="collapse">
+									<li><a href="#">Voting Buku Baru</a></li>
+									<li><a href="#">List Voting Saya</a></li>
+								</ul>
+							</li>
+                            <li>
+								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-eye"></i><span class="hide-menu">Review Buku</span></a>
+								<ul aria-expanded="false" class="collapse">
+									<li><a href="#">Review Buku Baru</a></li>
+									<li><a href="#">List Review Saya</a></li>
+								</ul>
+							</li>
                         </ul>
                     @else
                         <ul id="sidebarnav">
@@ -552,7 +512,8 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2019 Surveyor Indonesia
+                © 2019 Open Library
+
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

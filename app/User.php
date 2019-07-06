@@ -72,5 +72,17 @@ class User extends \Cartalyst\Sentinel\Users\EloquentUser
                 $image = 'material/images/users/p6.png';
         }
 		return $image;
-	}
+    }
+
+    public function review(){
+        return $this->hasOne(Review::class);
+    }
+
+    public function vote(){
+        return $this->hasOne(Vote::class);
+    }
+
+    public function recommendbook(){
+        return $this->hasMany(Recommendbook::class);
+    }
 }
