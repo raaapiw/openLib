@@ -18,7 +18,8 @@ class Recommendbook extends Model
         'penerjemah',
         'abstrak',
         'kota_penerbit',
-        'tahun_terbit'
+        'tahun_terbit',
+        'cover'
     ];
 
     public function user(){
