@@ -11,14 +11,14 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/favicon.png') }}">
-    <title>Monitoring Minba PTSI</title>
+    <title>Open Library</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     @yield('style')
     <!-- Custom CSS -->
     <link href="{{ asset('material/css/style.css') }}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="{{ asset('material/css/colors/blue.css') }}" id="theme" rel="stylesheet">
+    <link href="{{ asset('material/css/colors/red.css') }}" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -415,7 +415,7 @@
                             <li>
 								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Rekomendasi Buku</span></a>
 								<ul aria-expanded="false" class="collapse">
-									<li><a href="#">Rekomendasi Baru</a></li>
+									<li><a href="{{ route('mahasiswa.recommend.form')}}">Rekomendasi Baru</a></li>
 									<li><a href="#">List Rekomendasi</a></li>
 
 								</ul>
