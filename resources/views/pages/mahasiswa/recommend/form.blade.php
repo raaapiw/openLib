@@ -118,13 +118,13 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Abstrak</label>
                                     @if(isset($recommend))
-                                        <input type="textarea" class="form-control" id="tempat" name="abstrak" value="{{$recommend->place}}">
+                                        <textarea rows="7" class="form-control" id="tempat" name="abstrak" value="{{$recommend->place}}"></textarea>
                                     @else
-                                        <input type="textarea" class="form-control" id="tempat" name="abstrak">
+                                        <textarea rows="7" class="form-control" id="tempat" name="abstrak"></textarea>
                                     @endif
                                 </div>
                             </div>

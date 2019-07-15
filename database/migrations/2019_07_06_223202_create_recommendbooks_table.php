@@ -14,7 +14,7 @@ class CreateRecommendbooksTable extends Migration
     public function up()
     {
         Schema::create('recommendbooks', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('nama_buku')->nullable();
             $table->string('pengarang')->nullable();
@@ -26,6 +26,10 @@ class CreateRecommendbooksTable extends Migration
             $table->string('kota_penerbit')->nullable();
             $table->string('tahun_tebit')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade');
         });
     }
 

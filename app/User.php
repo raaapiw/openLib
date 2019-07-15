@@ -75,11 +75,11 @@ class User extends \Cartalyst\Sentinel\Users\EloquentUser
     }
 
     public function review(){
-        return $this->hasOne(Review::class);
+        return $this->hasMany(Review::class);
     }
 
     public function vote(){
-        return $this->hasOne(Vote::class);
+        return $this->hasMany(Vote::class);
     }
 
     public function recommendbook(){

@@ -12,4 +12,8 @@ class UserController extends Controller
 
         return view('pages.mahasiswa.dashboard');
     }
+    public function leaderboard(){
+
+        return view('pages.mahasiswa.leaderboard.index');
+    }
 }

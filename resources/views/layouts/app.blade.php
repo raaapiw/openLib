@@ -416,15 +416,15 @@
 								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Rekomendasi Buku</span></a>
 								<ul aria-expanded="false" class="collapse">
 									<li><a href="{{ route('mahasiswa.recommend.form')}}">Rekomendasi Baru</a></li>
-									<li><a href="#">List Rekomendasi</a></li>
+									<li><a href="{{ route('mahasiswa.recommend.list')}}">List Rekomendasi</a></li>
 
 								</ul>
                             </li>
                             <li>
 								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-check-square-o "></i><span class="hide-menu">Voting Buku</span></a>
 								<ul aria-expanded="false" class="collapse">
-									<li><a href="#">Voting Buku Baru</a></li>
-									<li><a href="#">List Voting Saya</a></li>
+									<li><a href="{{ route('mahasiswa.vote.show')}}">Voting Buku Baru</a></li>
+									<li><a href="{{ route('mahasiswa.vote.list')}}">List Voting Saya</a></li>
 								</ul>
 							</li>
                             <li>

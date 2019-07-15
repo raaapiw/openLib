@@ -14,7 +14,7 @@ class CreateCataloguebooksTable extends Migration
     public function up()
     {
         Schema::create('cataloguebooks', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('recommend_id')->unsigned();
             $table->string('kode')->nullable();
             $table->string('klasifikasi')->nullable();
@@ -22,8 +22,11 @@ class CreateCataloguebooksTable extends Migration
             $table->string('subjek')->nullable();
             $table->string('harga_sewa')->nullable();
             $table->string('denda')->nullable();
-            $table->string('jenis')->nullable();
             $table->timestamps();
+
+            $table->foreign('recommend_id')
+            ->references('id')->on('recommendbooks')
+            ->onDelete('cascade');
         });
     }
 

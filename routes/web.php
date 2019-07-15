@@ -15,6 +15,8 @@ Route::get('/', 'UserController@Index')->name('home');
 Route::post('/logout', 'UserController@postLogout')->name('postLogout');
 
 Route::group(['middleware' => 'visitor'], function() {
+
+    Route::get('/home', 'UserController@login')->name('home');
     Route::get('/login', 'UserController@login')->name('login');
     Route::post('/login', 'UserController@postLogin')->name('postLogin');
 
@@ -42,6 +44,7 @@ Route::group(['middleware' => 'mahasiswa'], function() {
     Route::get('/mahasiswa/recommedBook/update{id}', 'mahasiswa\RecommendController@update') ->name('mahasiswa.recommend.update');
     Route::get('/mahasiswa/recommedBook/list', 'mahasiswa\RecommendController@index') ->name('mahasiswa.recommend.list');
 
+    Route::get('/mahasiswa/vote/add', 'mahasiswa\VoteController@show') ->name('mahasiswa.vote.show');
     Route::get('/mahasiswa/vote/form', 'mahasiswa\VoteController@create') ->name('mahasiswa.vote.form');
     Route::get('/mahasiswa/vote/store', 'mahasiswa\VoteController@store') ->name('mahasiswa.vote.store');
     Route::get('/mahasiswa/vote/update{id}', 'mahasiswa\VoteController@update') ->name('mahasiswa.vote.update');
@@ -51,6 +54,8 @@ Route::group(['middleware' => 'mahasiswa'], function() {
     Route::get('/mahasiswa/review/store', 'mahasiswa\ReviewController@store') ->name('mahasiswa.review.store');
     Route::get('/mahasiswa/review/update{id}', 'mahasiswa\ReviewController@update') ->name('mahasiswa.review.update');
     Route::get('/mahasiswa/review/list', 'mahasiswa\ReviewController@index') ->name('mahasiswa.review.list');
+
+    Route::get('/mahasiswa/leaderboard/index', 'mahasiswa\UserController@leaderboard') ->name('mahasiswa.leaderboard.index');
 
 });
 

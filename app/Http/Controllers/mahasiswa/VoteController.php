@@ -7,8 +7,9 @@ use App\Http\Controllers\Controller;
 use \Input as Input;
 use Sentinel;
 use App\Recommendbook;
+use App\Vote;
 
-class RecommendController extends Controller
+class VoteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +19,9 @@ class RecommendController extends Controller
     public function index()
     {
         //
-        $recommends = Recommendbook::all();
-        return view('pages.mahasiswa.recommend.list', compact('recommends'));
+        $votes = Vote::where('user_id','=', Sentinel::getUser()->id)->get();
+
+        return view('pages.mahasiswa.vote.list', compact('votes'));
     }
 
     /**
@@ -27,10 +29,11 @@ class RecommendController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
-        return view ('pages.mahasiswa.recommend.form');
+        $recommend = Recommendbooks::find($id);
+        return view('pages.mahasiswa.vote.form', compact('recommend'));
     }
 
     /**
@@ -50,9 +53,13 @@ class RecommendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
+        $recommends = Recommendbook::all();
+
+        return view('pages.mahasiswa.vote.add', compact('recommends'));
+
     }
 
     /**
@@ -64,9 +71,6 @@ class RecommendController extends Controller
     public function edit($id)
     {
         //
-        $recommend = Recommend::find($id);
-
-        return view('pages.mahasiswa.form', compact('recommend'));
     }
 
     /**
@@ -79,6 +83,7 @@ class RecommendController extends Controller
     public function update(Request $request, $id)
     {
         //
+
     }
 
     /**
