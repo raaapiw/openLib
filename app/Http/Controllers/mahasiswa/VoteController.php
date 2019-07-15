@@ -19,9 +19,8 @@ class VoteController extends Controller
     public function index()
     {
         //
-        $votes = Vote::where('user_id','=', Sentinel::getUser()->id)->get();
 
-        return view('pages.mahasiswa.vote.list', compact('votes'));
+        return view('pages.mahasiswa.vote.index');
     }
 
     /**

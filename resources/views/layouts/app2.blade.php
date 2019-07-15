@@ -64,7 +64,7 @@
                             <!-- Dark Logo icon -->
                             <img src="{{ asset('material/images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
                             <!-- Light Logo icon -->
-                            <img src="{{ asset('material/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
+                            {{-- <img src="{{ asset('material/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" /> --}}Open Library
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
@@ -72,7 +72,7 @@
                          <!-- dark Logo text -->
                          <img src="{{ asset('material/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
                          <!-- Light Logo text -->
-                         <img src="{{ asset('material/images/logo-light-text.png') }}" class="light-logo" alt="homepage" /></span> </a>
+                         &nbsp;
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -213,7 +213,7 @@
                             </ul> --}}
                         </li>
                         <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-check-square-o "></i><span class="hide-menu">Vote Books</span></a>
+                            <a class="has-arrow " href="{{ route('mahasiswa.vote.index')}}" aria-expanded="false"><i class="fa fa-check-square-o "></i><span class="hide-menu">Vote Books</span></a>
                             {{-- <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{ route('mahasiswa.vote.show')}}">Voting Buku Baru</a></li>
                                 <li><a href="{{ route('mahasiswa.vote.list')}}">List Voting Saya</a></li>
