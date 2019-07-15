@@ -4,11 +4,8 @@ namespace App\Http\Controllers\mahasiswa;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use \Input as Input;
-use Sentinel;
-use App\Recommendbook;
 
-class RecommendController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +15,9 @@ class RecommendController extends Controller
     public function index()
     {
         //
-        $recommends = Recommendbook::all();
-        return view('pages.mahasiswa.recommend.list', compact('recommends'));
+        $reviews = Review::where('user_id','=', Sentinel::getUser()->id)->get();
+
+        return view('pages.mahasiswa.review.list', compact('reviews'));
     }
 
     /**
@@ -30,7 +28,8 @@ class RecommendController extends Controller
     public function create()
     {
         //
-        return view ('pages.mahasiswa.recommend.form');
+        $catalogue = Cataloguebooks::find($id);
+        return view('pages.mahasiswa.review.form', compact('catalogue'));
     }
 
     /**
@@ -53,6 +52,9 @@ class RecommendController extends Controller
     public function show($id)
     {
         //
+        $catalogs = Cataloguebooks::all();
+
+        return view('pages.mahasiswa.vote.add', compact('catalogs'));
     }
 
     /**
@@ -64,9 +66,6 @@ class RecommendController extends Controller
     public function edit($id)
     {
         //
-        $recommend = Recommend::find($id);
-
-        return view('pages.mahasiswa.form', compact('recommend'));
     }
 
     /**
