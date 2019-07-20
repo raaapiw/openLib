@@ -18,38 +18,33 @@
 
 @section('content')
 <br>
-<div class="row ">
-    <div class="col-md-12">
-        <center>
-            <form action="{{ url()->current() }}">
-                <div class="col-md-10">
-                    <input type="text" name="keyword" class="form-control" placeholder="Search what you're going to review . . ."/>
-                </div>
-                <br>
-                <div class="col-md-1">
-                    <button type="submit" class="btn btn-primary">
-                        search
-                    </button>
-                </div>
-            </form>
-        </center>
-    </div>
-</div>
-<br>
 <br>
 <div class="row">
-    <div class="col-lg-9">
-        <div class="card">
-            <div class="card-body collapse show">
-                <h3 class="card-title">New Release</h3>
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
-                        <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="col-lg-3">
+       <center> <a href=""><img src="{{asset('material/images/marmut.jpg')}}" alt=""></a></center>
+    </div>
+    <div class="col-lg-6">
+        <h1>Marmut Merah Jambu</h1>
+            <p align="justify" style="color:black;">
+                    <img src="{{asset('material/images/author.png')}}" alt=""> &nbsp;&nbsp;<img src="{{asset('material/images/publisher.png')}}" alt=""> <br>
+                    bintang&nbsp;&nbsp;<img src="{{asset('material/images/review.png')}}" alt=""> <br>
+                    <b>Synopsis:</b><br>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex nemo placeat ea explicabo maxime tempore doloribus labore fugit cum totam magni, dignissimos atque quis doloremque debitis laudantium, quaerat ducimus a.
+                    <br>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt perferendis, labore dicta impedit, inventore quisquam autem quidem nulla doloremque veritatis optio mollitia consectetur illo dolore repellat, sit ducimus laudantium libero?
+                    <br>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni aut ducimus error in, molestias repellat nobis repudiandae quae dicta nostrum possimus, iusto ipsam laudantium earum autem odit! Voluptas, alias id?
+                    <br>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quae asperiores architecto quam ipsa nam molestiae, ex illo atque modi. Fuga odit quae earum sit. Aspernatur minima earum assumenda esse.
+                    <br>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim excepturi amet est ex nesciunt porro sit dolores dolorem facilis minus eius, nulla tenetur nobis, a cupiditate alias iusto nisi delectus.
+                    <br>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi ad quos enim possimus atque facilis ipsam quibusdam expedita rerum sequi. Dignissimos, maiores suscipit beatae itaque labore ad. Cupiditate, unde accusantium.
+                    <br>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio itaque assumenda accusamus laboriosam? Ipsum, placeat beatae sed expedita voluptatem magnam distinctio quod earum. Unde molestiae ut dolorum, fugiat tempore corrupti?
+                    <br>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium voluptates aliquid quisquam deleniti esse, exercitationem repudiandae id aperiam atque animi natus voluptas eos fugiat velit ut illo sed quas doloribus.
+                </p>
     </div>
     <div class="col-lg-3 col-md-5">
         <div class="card">
@@ -61,26 +56,19 @@
                 <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
                 <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
                 <br>
-                <div class="card">
-                    <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <a href="#" class="btn btn-success">Vote</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <a href="#" class="btn btn-success">Vote</a>
-                    </div>
-                </div>
+                <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
+                <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
+                <br>
+                <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
+                <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
+                <br>
             </div>
             </center>
         </div>
     </div>
 </div>
-<div class="row" style="margin-top:-510px;">
+<div class="row">
+    <div class="col-lg-3"></div>
     <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
@@ -98,32 +86,6 @@
                         <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
                         <div class=""> <a href="{{ route('mahasiswa.review.index')}}"> <span class="text-muted pull-right"><u style="color: black;">Read More...</u></span></a></div>
                     </div>
-                </div>
-                <!-- Comment Row -->
-                <div class="d-flex flex-row comment-row">
-                    <div class="p-2"><span class="round"><img src="../assets/images/users/1.jpg" alt="user" width="50"></span></div>
-                    <div class="comment-text w-100">
-                        <h5>James Anderson</h5>
-                        <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
-                        <div class=""> <a href="{{ route('mahasiswa.review.index')}}"> <span class="text-muted pull-right"><u>Read More...</u></span></a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Member of The Week</h4>
-                <!-- ============================================================== -->
-                <!-- To do list widgets -->
-                <!-- ============================================================== -->
-                <img class="card-img-top" src="{{ asset('material/images/background/profile-bg.jpg')}}" alt="Card image cap">
-                <div class="card-body little-profile text-center">
-                    <div class="pro-img"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" /></div>
-                    <h3 class="m-b-0">Kim Do Young</h3>
-                    <p>FRI - 1201150444</p>
-                    <p>1500 points, 127 Review</p>
                 </div>
             </div>
         </div>
