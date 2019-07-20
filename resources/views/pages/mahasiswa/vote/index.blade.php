@@ -19,6 +19,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th></th>
                                 <th style="width:50%"><center>Book's Details</center></th>
                                 <th><center>Votes</center></th>
                                 <th><center>Vote</center></th>
@@ -28,11 +29,11 @@
                             {{-- @foreach($shippings as $key=>$row) --}}
                                 <tr>
                                     <td>1</td>
+                                    <td><a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a></td>
                                     <td>
                                         <div class="sl-right">
                                             <div>
                                                 <div class="m-t-20 row">
-                                                    <div class="col-md-3 col-xs-12"><img src="{{ asset('material/images/big/img1.jpg')}}" alt="user" class="img-responsive radius"></div>
                                                     <div class="col-md-9 col-xs-12">
                                                         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p></div>
                                                 </div>
@@ -69,13 +70,11 @@
                 <h3 class="card-title">Winner of the last event</h3>
             </div>
             <div class="col-sm-8">
-                <div class="card">
-                    <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <a href="#" class="btn btn-success">Vote</a>
-                    </div>
-                </div>
+                    <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
+                    <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
+                    <a href="#" class="btn btn-success">Vote</a>
+                    <br>
+                    <br>
             </div>
             </center>
         </div>

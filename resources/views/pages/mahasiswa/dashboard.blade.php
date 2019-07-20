@@ -44,58 +44,8 @@
                 <h3 class="card-title">New Release</h3>
                 <div class="row">
                     <div class="col-lg-2">
-                        <div class="card">
-                            <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <a href="#" class="btn btn-warning">Review</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="card">
-                            <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <a href="#" class="btn btn-warning">Review</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="card">
-                            <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <a href="#" class="btn btn-warning">Review</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="card">
-                            <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <a href="#" class="btn btn-warning">Review</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="card">
-                            <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <a href="#" class="btn btn-warning">Review</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="card">
-                            <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <a href="#" class="btn btn-warning">Review</a>
-                            </div>
-                        </div>
+                        <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
+                        <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
                     </div>
                 </div>
             </div>
@@ -108,13 +58,8 @@
                 <h3 class="card-title">Top Vote</h3>
             </div>
             <div class="col-sm-8">
-                <div class="card">
-                    <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <a href="#" class="btn btn-success">Vote</a>
-                    </div>
-                </div>
+                <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
+                <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
                 <br>
                 <div class="card">
                     <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
@@ -191,3 +136,10 @@
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
 @endsection
+{{-- <div class="card">
+    <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
+    <div class="card-body">
+        <h4 class="card-title">Card title</h4>
+        <a href="#" class="btn btn-warning">Review</a>
+    </div>
+</div> --}}

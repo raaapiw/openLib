@@ -21,6 +21,14 @@ class ReviewController extends Controller
         return view('pages.mahasiswa.review.index');
     }
 
+    public function detail()
+    {
+        //
+        // $reviews = Review::where('user_id','=', Sentinel::getUser()->id)->get();
+
+        return view('pages.mahasiswa.review.detail');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

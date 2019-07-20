@@ -55,6 +55,7 @@ Route::group(['middleware' => 'mahasiswa'], function() {
     Route::get('/mahasiswa/review/update{id}', 'mahasiswa\ReviewController@update') ->name('mahasiswa.review.update');
     Route::get('/mahasiswa/review/list', 'mahasiswa\ReviewController@index') ->name('mahasiswa.review.list');
     Route::get('/mahasiswa/review/index', 'mahasiswa\ReviewController@index') ->name('mahasiswa.review.index');
+    Route::get('/mahasiswa/review/detail', 'mahasiswa\ReviewController@detail') ->name('mahasiswa.review.detail');
 
     Route::get('/mahasiswa/leaderboard/index', 'mahasiswa\UserController@leaderboard') ->name('mahasiswa.leaderboard.index');
 
