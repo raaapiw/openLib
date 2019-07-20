@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use \Input as Input;
 use Sentinel;
-use App\Recommendbook;
-use App\Vote;
+use App\Book;
+use Storage;
 
-class VoteController extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,6 @@ class VoteController extends Controller
     public function index()
     {
         //
-
-        return view('pages.mahasiswa.vote.index');
     }
 
     /**
@@ -28,11 +26,10 @@ class VoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
         //
-        $recommend = Recommendbooks::find($id);
-        return view('pages.mahasiswa.vote.form', compact('recommend'));
+        return view('pages.mahasiswa.book.form');
     }
 
     /**
@@ -44,6 +41,28 @@ class VoteController extends Controller
     public function store(Request $request)
     {
         //
+        $uploadedFile = $request->file('cover');
+
+        // dd($uploadedFile);
+        $uploadedFileName = $request->title;
+
+        if (Storage::exists($uploadedFileName)) {
+            Storage::delete($uploadedFileName);
+        }
+        $path = $uploadedFile->storeAs('public/files/cover', $uploadedFileName);
+
+        $data = [
+            'user_id' => Sentinel::getUser()->id,
+            'cover'=> $path,
+            'nama_buku' => $request->title,
+            'pengarang' => $request->author,
+            'synopsis' => $request->synopsis,
+            'penerbit' => $request->publisher,
+        ];
+        // dd($data);
+        $book = Book::create($data);
+        // dd($report);
+        return redirect()->route('mahasiswa.dashboard');
     }
 
     /**
@@ -52,13 +71,9 @@ class VoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
         //
-        $recommends = Recommendbook::all();
-
-        return view('pages.mahasiswa.vote.add', compact('recommends'));
-
     }
 
     /**
@@ -82,7 +97,6 @@ class VoteController extends Controller
     public function update(Request $request, $id)
     {
         //
-
     }
 
     /**

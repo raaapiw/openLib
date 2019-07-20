@@ -2,9 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-use App\Order;
 
-class RecommendbooksTableSeeder extends Seeder
+class BooksTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +15,7 @@ class RecommendbooksTableSeeder extends Seeder
         //
         $faker = Faker::create();
         foreach(range(0,10) as $index){
-            DB::table('recommendbooks')->insert([
+            DB::table('books')->insert([
                 'user_id' => $index+1,
                 'nama_buku' => $faker->text($maxNbChars = 190),
                 'pengarang' => $faker->text($maxNbChars = 190),
@@ -26,7 +25,6 @@ class RecommendbooksTableSeeder extends Seeder
                 'penerjemah' =>0,
                 'abstrak' =>0,
                 'kota_penerbit' =>0,
-                'tahun_terbit' =>0,
             ]);
         }
     }

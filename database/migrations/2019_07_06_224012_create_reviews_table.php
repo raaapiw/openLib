@@ -15,14 +15,14 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('catalogue_id')->unsigned();
+            $table->integer('book_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('keterangan')->nullable();
             $table->integer('review')->unsigned();
             $table->timestamps();
 
-            $table->foreign('catalogue_id')
-            ->references('id')->on('cataloguebooks')
+            $table->foreign('book_id')
+            ->references('id')->on('books')
             ->onDelete('cascade');
 
             $table->foreign('user_id')

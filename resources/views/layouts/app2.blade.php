@@ -14,6 +14,7 @@
     <title>Material Pro Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
     <!-- Bootstrap Core CSS -->
     @yield('style')
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- chartist CSS -->
     <link href="{{ asset('material/plugins/chartist-js/dist/chartist.min.css')}}" rel="stylesheet">
@@ -34,6 +35,32 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+<style>
+    .a{
+        background-color: #58585C;
+        color: white;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-family: "Open Sans";
+    }
+.tablink {
+  background-color: #58585C;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  /* padding: 14px 16px;
+  font-size: 17px; */
+  /* width: 25%; */
+}
+.tablink:hover {
+  background-color: #777;
+  /* width: 100%; */
+}
+</style>
 </head>
 
 <body class="fix-header fix-sidebar card-no-border logo-center">
@@ -59,20 +86,24 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
+                        <a href="#" aria-expanded="false"> <font color="#58585c"> Home</font></a>
+                        {{-- <a href="#" aria-expanded="false"> <font color="white"> Catalogue</font></a>
+                        <a href="#" aria-expanded="false"> <font color="white"> Vote</font></a>
+                        <a href="#" aria-expanded="false"> <font color="white"> Leaderboard</font></a> --}}
                         <b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="{{ asset('material/images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
+                            {{-- <img src="{{ asset('material/images/logo-icon.png') }}" alt="homepage" class="dark-logo" /> --}}
                             <!-- Light Logo icon -->
-                            <img src="{{ asset('material/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
+                            {{-- <img src="{{ asset('material/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" /> --}}
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span>
                          <!-- dark Logo text -->
-                         <img src="{{ asset('material/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
+                         {{-- <img src="{{ asset('material/images/logo-text.png') }}" alt="homepage" class="dark-logo" /> --}}
                          <!-- Light Logo text -->
-                         <img src="{{ asset('material/images/logo-light-text.png') }}" class="light-logo" alt="homepage" /></span> </a>
+                         &nbsp;
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -87,7 +118,19 @@
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        &nbsp;<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('material/images/owl.png') }}" alt="user" class="profile-pic" /></a>
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('material/images/Logo.png') }}" alt="user" class="profile-pic" /></a>
+                        <button class="a" >OPEN LIBRARY</button>&nbsp;&nbsp;&nbsp;
+                        @if(Sentinel::getUser()->roles()->first()->slug == 'mahasiswa')
+                        <button class="tablink" onclick="window.location.href='{{ route('mahasiswa.dashboard')}}'">Home</button>
+                        <button class="tablink" onclick="window.location.href='{{ route('mahasiswa.review.index')}}'">Catalogue</button>
+                        <button class="tablink" onclick="window.location.href='{{ route('mahasiswa.vote.index')}}'">Vote</button>
+                        <button class="tablink" onclick="window.location.href='{{ route('mahasiswa.leaderboard.index')}}'">Leaderboard</button>
+                        @else
+                        <button class="tablink" onclick="window.location.href='{{ route('visitor.dashboard')}}'">Home</button>
+                        <button class="tablink" onclick="window.location.href='{{ route('visitor.review.index')}}'">Catalogue</button>
+                        <button class="tablink" onclick="window.location.href='{{ route('visitor.vote.index')}}'">Vote</button>
+                        <button class="tablink" onclick="window.location.href='{{ route('visitor.leaderboard.index')}}'">Leaderboard</button>
+                        @endif
                     </ul>
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
@@ -97,22 +140,28 @@
                         <!-- Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><font color="white">&nbsp;Welcome, Mahasiswa</font></a>
-                            <div class="dropdown-menu dropdown-menu-right scale-up">
+                            @if(Sentinel::getUser()->roles()->first()->slug == 'mahasiswa')
+                            <a><span class="label label-custom1">{{ Sentinel::getUser()->name }}</span></a>
+                            <a href="javascript:void(0);" onclick="$(this).find('form').submit();"><span class="label label-danger">Logout<form action="{{ route('postLogout') }}" method="POST"></form></span></a>
+                            @else
+                            <a href=""><span class="label label-custom">Login</span></a>
+                            <a href=""><span class="label label-custom">SignUp</span></a>
+                            @endif
+                            {{-- <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
                                         <a href=""><i class="fa fa-user"></i> Profile </a>
                                     </li>
-                                    {{-- <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
                                     <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
                                     <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li> --}}
+                                    <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="javascript:void(0);" onclick="$(this).find('form').submit();"><i class="fa fa-power-off"></i> Logout <form action="{{ route('postLogout') }}" method="POST">
                                     </form></a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </li>
                         <!-- ============================================================== -->
                         <!-- Language -->
@@ -131,7 +180,7 @@
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar">
+        {{-- <aside class="left-sidebar">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
@@ -175,28 +224,8 @@
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="#">Tambah Buku Baru</a></li>
                                 <li><a href="#">List Buku</a></li>
-
                             </ul>
                         </li>
-                        {{-- <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li>
-                                    <a class="has-arrow " href="#" aria-expanded="false"><span class="hide-menu">Add Patient</span></a>
-                                    <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('admin.patient.createchild')}}">Child</a></li>
-                                    <li><a href="{{ route('admin.patient.createadult')}}">Adult</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="has-arrow " href="#" aria-expanded="false"><span class="hide-menu">List Patient</span></a>
-                                    <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('admin.patient.listchild')}}">List Patient Child</a></li>
-                                    <li><a href="{{ route('admin.patient.listadult')}}">List Patient Adult</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li> --}}
                     </ul>
                 @elseif(Sentinel::getUser()->roles()->first()->slug == 'mahasiswa')
                     <ul id="sidebarnav">
@@ -205,19 +234,12 @@
                             <a href="{{ route('mahasiswa.dashboard')}}" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Home</span></a>
                         </li>
                         <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-eye"></i><span class="hide-menu">Review & Rating Books</span></a>
-                            {{-- <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{ route('mahasiswa.recommend.form')}}">Rekomendasi Baru</a></li>
-                                <li><a href="{{ route('mahasiswa.recommend.list')}}">List Rekomendasi</a></li>
+                            <a class="has-arrow " href="{{ route('mahasiswa.review.index')}}" aria-expanded="false"><i class="fa fa-eye"></i><span class="hide-menu">Review & Rating Books</span></a>
 
-                            </ul> --}}
                         </li>
                         <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-check-square-o "></i><span class="hide-menu">Vote Books</span></a>
-                            {{-- <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{ route('mahasiswa.vote.show')}}">Voting Buku Baru</a></li>
-                                <li><a href="{{ route('mahasiswa.vote.list')}}">List Voting Saya</a></li>
-                            </ul> --}}
+                            <a class="has-arrow " href="{{ route('mahasiswa.vote.index')}}" aria-expanded="false"><i class="fa fa-check-square-o "></i><span class="hide-menu">Vote Books</span></a>
+
                         </li>
                         <li>
                             <a class="has-arrow " href="{{ route('mahasiswa.leaderboard.index')}}" aria-expanded="false"><i class="ti-cup"></i><span class="hide-menu">Leaderboard</span></a>
@@ -241,7 +263,6 @@
                                 <li><a href="{{route('pharmacist.prescription.confirm')}}">Confirm Prescription</a></li>
                                 <li><a href="{{route('pharmacist.prescription.list')}}">Prescription List</a></li>
                             </ul>
-                            {{-- <a href="{{route('pharmacist.receipt.list')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Prescription</span></a> --}}
                         </li>
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Medicine</span></a>
@@ -256,7 +277,7 @@
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
-        </aside>
+        </aside> --}}
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
