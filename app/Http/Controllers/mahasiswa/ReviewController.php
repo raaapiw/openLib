@@ -12,12 +12,13 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
-        $reviews = Review::where('user_id','=', Sentinel::getUser()->id)->get();
+        // $reviews = Review::where('user_id','=', Sentinel::getUser()->id)->get();
 
-        return view('pages.mahasiswa.review.list', compact('reviews'));
+        return view('pages.mahasiswa.review.index');
     }
 
     /**

@@ -40,9 +40,9 @@ File: scss
   /* Old browsers */
   background: -moz-linear-gradient(left, #f62d51 0%, #660fb5 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #57565B 0%, #660fb5 100%);
+  background: -webkit-linear-gradient(left, #58585C 0%, #660fb5 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, #57565B 100%, #660fb5 0%);
+  background: linear-gradient(to right, #58585C 100%, #660fb5 0%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
