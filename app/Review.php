@@ -19,7 +19,7 @@ class Review extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function cataloguebook(){
-        return $this->hasOne(Cataloguebook::class);
+    public function book(){
+        return $this->hasOne(Book::class);
     }
 }

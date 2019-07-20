@@ -8,10 +8,8 @@
 @section('content')
 <br>
 <br>
-<center>
     <h1>Vote Your Books</h1>
     <h5>Don't see your favorite in here ? Add by yourself!</h5>
-</center>
 <div class="row">
     <div class="col-lg-9">
         <div class="card">

@@ -15,14 +15,14 @@ class CreateVotesTable extends Migration
     {
         Schema::create('votes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('recommend_id')->unsigned();
+            $table->integer('book_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('keterangan')->nullable();
             $table->integer('vote')->unsigned();
             $table->timestamps();
 
-            $table->foreign('recommend_id')
-            ->references('id')->on('recommendbooks')
+            $table->foreign('book_id')
+            ->references('id')->on('books')
             ->onDelete('cascade');
 
             $table->foreign('user_id')

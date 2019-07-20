@@ -19,7 +19,7 @@ class Vote extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function recommendbook(){
-        return $this->belongsTo(Recommendbook::class);
+    public function book(){
+        return $this->belongsTo(Book::class);
     }
 }
