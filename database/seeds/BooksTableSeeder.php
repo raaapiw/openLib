@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class BooksTableSeeder extends Seeder
 {
@@ -24,7 +25,6 @@ class BooksTableSeeder extends Seeder
                 'penerjemah' =>0,
                 'abstrak' =>0,
                 'kota_penerbit' =>0,
-                'tahun_terbit' =>0,
             ]);
         }
     }

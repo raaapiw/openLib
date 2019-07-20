@@ -57,6 +57,9 @@ Route::group(['middleware' => 'mahasiswa'], function() {
     Route::get('/mahasiswa/review/index', 'mahasiswa\ReviewController@index') ->name('mahasiswa.review.index');
     Route::get('/mahasiswa/review/detail', 'mahasiswa\ReviewController@detail') ->name('mahasiswa.review.detail');
 
+    Route::get('/mahasiswa/book/add', 'mahasiswa\BookController@create') ->name('mahasiswa.book.add');
+    Route::post('/mahasiswa/book/store', 'mahasiswa\BookController@store') ->name('mahasiswa.book.store');
+
     Route::get('/mahasiswa/leaderboard/index', 'mahasiswa\UserController@leaderboard') ->name('mahasiswa.leaderboard.index');
 
 });

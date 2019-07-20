@@ -78,15 +78,27 @@
             <!-- ============================================================== -->
             <div class="comment-widgets">
                 <!-- Comment Row -->
-                <div class="d-flex flex-row comment-row">
-                    <div class="p-2"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" width="50"></div>
-                    <div class="comment-text w-100">
-                        <p style="color: black;"><b>Kim Do Young</b> for <b><u>Ask Again, Yes</u></b></p>
-                        <p style="color: black;">"Light but Deep"</p>
-                        <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
-                        <div class=""> <a href="{{ route('mahasiswa.review.index')}}"> <span class="text-muted pull-right"><u style="color: black;">Read More...</u></span></a></div>
+                <form action="{{ route('mahasiswa.review.store')}}" method="POST" enctype="multipart/form-data">
+                    <div class="d-flex flex-row comment-row">
+                        <div class="p-2"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" width="50"></div>
+                        <div class="comment-text w-100">
+                            <p style="color: black;"><b>Kim Do Young</b> for <b><u>Ask Again, Yes</u></b></p>
+                            <p style="color: black;">"Light but Deep"</p>
+                            <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+                        </div>
                     </div>
-                </div>
+                    <div class="d-flex flex-row comment-row">
+                        <div class="p-2"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" width="50"></div>
+                        <div class="comment-text w-100">
+                            <p style="color: black;"><b>{{ Sentinel::getUser()->name }}</b></p>
+                            <input type="text" name="subject" id="firstName" class="form-control" placeholder="Subject"><br><br>
+                            <textarea name="review" id="" rows="10" class="form-control" placeholder="Write your review here..."></textarea>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-warning" value="upload"> Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

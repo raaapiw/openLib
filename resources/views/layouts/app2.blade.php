@@ -141,7 +141,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             @if(Sentinel::getUser()->roles()->first()->slug == 'mahasiswa')
-                            <a><span class="label label-custom1">Aku</span></a>
+                            <a><span class="label label-custom1">{{ Sentinel::getUser()->name }}</span></a>
                             <a href="javascript:void(0);" onclick="$(this).find('form').submit();"><span class="label label-danger">Logout<form action="{{ route('postLogout') }}" method="POST"></form></span></a>
                             @else
                             <a href=""><span class="label label-custom">Login</span></a>

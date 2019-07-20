@@ -59,7 +59,7 @@
             </font>
             <br>
             <br>
-            <a href="#" class="btn btn-success">Add Book</a>
+            <a href="{{route('mahasiswa.book.add')}}" class="btn btn-success">Add Book</a>
 
         </center>
         <br>
