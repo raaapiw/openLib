@@ -21,7 +21,18 @@
 <br>
 <div class="row">
     <div class="col-lg-3">
-        <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" alt=""></a>
+        <form action="{{ route('mahasiswa.vote.store')}}" method="POST" enctype="multipart/form-data">
+        <center>
+            <input type="hidden" name="book_id" value="{{$book->id}}">
+            <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" alt=""></a>
+            <br>
+            <br>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success" value="upload"><i class="fa fa-check"></i> Vote</button>
+                <a class="btn btn-inverse btn-close" href="{{ url()->previous() }}">Cancel</a>
+            </div>
+        </center>
+        </form>
     </div>
     <div class="col-lg-6">
         <h1>{{$book->nama_buku}}</h1>
@@ -53,45 +64,7 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Recent Review</h4> </div>
-            <!-- ============================================================== -->
-            <!-- Comment widgets -->
-            <!-- ============================================================== -->
-            <div class="comment-widgets">
-                <!-- Comment Row -->
-                <form action="{{ route('mahasiswa.review.store')}}" method="POST" enctype="multipart/form-data">
-                    @foreach($reviews as $key=>$row)
-                        <div class="d-flex flex-row comment-row">
-                            <div class="p-2"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" width="50"></div>
-                            <div class="comment-text w-100">
-                                <p style="color: black;"><b>Kim Do Young</b> for <b><u>Ask Again, Yes</u></b></p>
-                                <p style="color: black;">"Light but Deep"</p>
-                                <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
-                            </div>
-                        </div>
-                    @endforeach
-                    <div class="d-flex flex-row comment-row">
-                        <input type="hidden" name="book_id" value="{{$book->id}}">
-                        <div class="p-2"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" width="50"></div>
-                        <div class="comment-text w-100">
-                            <p style="color: black;"><b>{{ Sentinel::getUser()->name }}</b></p>
-                            <input type="text" name="subject" id="firstName" class="form-control" placeholder="Subject"><br><br>
-                            <textarea name="review" id="" rows="10" class="form-control" placeholder="Write your review here..."></textarea>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-warning" value="upload"> Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
 @endsection
 
 @section('script')

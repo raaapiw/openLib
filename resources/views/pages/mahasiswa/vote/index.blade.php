@@ -26,24 +26,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach($shippings as $key=>$row) --}}
+                            @foreach($books as $key=>$row)
                                 <tr>
-                                    <td>1</td>
-                                    <td><a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a></td>
+                                    <td><center>{{$key+1}}</center></td>
+                                    <td><a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a></td>
                                     <td>
                                         <div class="sl-right">
                                             <div>
                                                 <div class="m-t-20 row">
                                                     <div class="col-md-9 col-xs-12">
-                                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p></div>
+                                                        <p>{{$row->synopsis}}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td><center>18 Votes</center></td>
-                                    <td><center><a href="#" class="btn btn-success"> Vote</a></center></td>
+                                    <td><center>{{$row->votes}}</center></td>
+                                    <td><center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center></td>
                                 </tr>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -72,7 +73,6 @@
             <div class="col-sm-8">
                     <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
                     <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
-                    <a href="#" class="btn btn-success">Vote</a>
                     <br>
                     <br>
             </div>
@@ -89,4 +89,20 @@
 <script>$('#myTable').DataTable({
         "order": [[ 0, "asc" ]]
     });</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.btn').click(function(){
+            var currentValue = $(this).attr("id");
+            $.ajax({
+                url: '{{ route('mahasiswa.vote.store')}}',
+                method: 'post',
+                data: {id:currentValue , vote: 1.val()},
+                success: function(data){
+                    alert(data);
+                },
+                error: function(){},
+            });
+        });
+    });
+</script>
 @endsection

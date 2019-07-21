@@ -59,7 +59,10 @@
             </div>
             <div class="col-sm-8">
                 <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
-                <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
+                <p align="center" style="color:black;">
+                    <b>Marmut Merah Jambu</b><br>
+                    <a href="#" class="btn btn-success">Vote</a>
+                </p>
                 <br>
                 <div class="card">
                     <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">

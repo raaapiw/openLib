@@ -4,6 +4,12 @@ namespace App\Http\Controllers\mahasiswa;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use \Input as Input;
+use Sentinel;
+use App\User;
+use App\Vote;
+use App\Book;
+use App\Review;
 
 class ReviewController extends Controller
 {
@@ -17,16 +23,18 @@ class ReviewController extends Controller
     {
         //
         // $reviews = Review::where('user_id','=', Sentinel::getUser()->id)->get();
+        $books = Book::all();
 
-        return view('pages.mahasiswa.review.index');
+        return view('pages.mahasiswa.review.index', compact('books'));
     }
 
-    public function detail()
+    public function detail($id)
     {
         //
-        // $reviews = Review::where('user_id','=', Sentinel::getUser()->id)->get();
+        $reviews = Review::where('book_id','=', $id)->get();
+        $book = Book::find($id);
 
-        return view('pages.mahasiswa.review.detail');
+        return view('pages.mahasiswa.review.detail', compact('book', 'reviews'));
     }
 
     /**
@@ -50,6 +58,38 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         //
+        $data = [
+            'user_id' => Sentinel::getUser()->id,
+            'book_id' => $request->book_id,
+            'review'=> $request->review,
+            'keterangan'=> $request->subject
+        ];
+        // dd($data);
+        $review = Review::create($data);
+
+        $user = User::where('id','=',Sentinel::getUser()->id)->first();
+        // dd($book);
+        $reviews = $user->reviews + 1;
+        // dd($vote);
+        $data_user = [
+            'reviews' => $reviews,
+        ];
+
+        // dd($data_book);
+        $user->fill($data_user)->save();
+
+        $book = Book::where('id','=',$request->book_id)->first();
+        // dd($book);
+        $reviews = $book->reviews + 1;
+        // dd($vote);
+        $data_book = [
+            'reviews' => $reviews,
+        ];
+
+        // dd($data_book);
+        $book->fill($data_book)->save();
+
+        return redirect()->route('mahasiswa.review.index');
     }
 
     /**

@@ -24,8 +24,10 @@ class CreateBooksTable extends Migration
             $table->string('penerjemah')->nullable();
             $table->string('abstrak')->nullable();
             $table->string('kota_penerbit')->nullable();
-            $table->integer('tahun_tebit')->nullable();
+            $table->integer('votes')->nullable();
+            $table->integer('reviews')->nullable();
             $table->string('cover')->nullable();
+            $table->string('synopsis')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

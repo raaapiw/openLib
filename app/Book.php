@@ -19,7 +19,10 @@ class Book extends Model
         'abstrak',
         'kota_penerbit',
         'tahun_terbit',
-        'cover'
+        'cover',
+        'synopsis',
+        'votes',
+        'reviews'
     ];
 
     public function user(){

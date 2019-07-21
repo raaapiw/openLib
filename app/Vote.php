@@ -9,7 +9,7 @@ class Vote extends Model
     //
     protected $fillable =[
 
-        'recommend_id',
+        'book_id',
         'user_id',
         'keterangan',
         'vote',
