@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-8">
         <center>
-            <b><h1>LEADERBOARD</h1></b> <br>
+            <h1 style="font-size:80px">LEADERBOARD</h1> <br>
             <img src="{{asset('material/images/tropi.png')}}" alt=""height="200px" width="200px">
             <br>
             <br>
@@ -32,11 +32,11 @@
                         <tbody>
                             @foreach($users as $key=>$row)
                             <tr>
-                                <td><center>{{$key+1}}</center></td>
-                                <td>{{$row->name}}</td>
+                                <td><font color="black"><center>{{$key+1}}</center></font></td>
+                                <td><font color="black">{{$row->name}}</font></td>
                                 <td id="detailInfo" ></td>
-                                <td>FEB</td>
-                                <td>{{$row->reviews * 10}}</td>
+                                <td><font color="black">FEB</font></td>
+                                <td><font color="black">{{$row->reviews}}</font></td>
                             </tr>
                             @endforeach
                         </tbody>

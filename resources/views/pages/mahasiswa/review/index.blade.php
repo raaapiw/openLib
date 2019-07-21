@@ -6,6 +6,25 @@
 @endsection
 
 @section('content')
+<div class="row ">
+    <div class="col-md-12">
+        <center>
+            <form action="{{ url()->current() }}">
+                <div class="col-md-10">
+                    <input type="text" name="keyword" class="form-control" placeholder="Search what you're going to review . . ."/>
+                </div>
+                <br>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-primary">
+                        search
+                    </button>
+                </div>
+            </form>
+        </center>
+    </div>
+</div>
+<br>
+<br>
 <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10">

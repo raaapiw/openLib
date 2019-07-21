@@ -71,7 +71,7 @@
         </div>
     </div>
 </div>
-<div class="row" style="margin-top:-510px;">
+<div class="row" style="margin-top:-650px; margin-bottom:200px">
     <div class="col-lg-6">
         <div class="card">
             <div class="card-body">

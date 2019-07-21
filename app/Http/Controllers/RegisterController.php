@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\User;
+use Sentinel;
 
 class RegisterController extends Controller
 {
@@ -14,6 +15,7 @@ class RegisterController extends Controller
     public function index()
     {
         //
+        return view('register');
     }
 
     /**
@@ -41,14 +43,15 @@ class RegisterController extends Controller
             'email'     => $request->email,
             'username'  => $request->username,
             'password'  => $request->password,
-            'faculty'  => $request->password,
-            'reviews'  => 0
+            'faculty'  => $request->faculty,
+            'reviews'  => 0,
         ];
-
+        // dd($data);
         $user = Sentinel::registerAndActivate($data);
         $role = Sentinel::findRoleBySlug('mahasiswa');
         $user->roles()->attach($role);
 
+        return redirect()->route('login');
     }
 
     /**

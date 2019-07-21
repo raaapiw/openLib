@@ -26,4 +26,10 @@ class UserController extends Controller
         $users = User::orderBy('reviews','DESC')->take(7)->get();
         return view('pages.mahasiswa.leaderboard.index', compact('users'));
     }
+
+    public function profile($id){
+        $user = User::where('id','=',$id)->first();
+        $reviews = Review::where('user_id','=',$id)->get();
+        return view ('pages.mahasiswa.profile', compact('user', 'reviews'));
+    }
 }

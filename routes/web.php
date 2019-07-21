@@ -20,6 +20,9 @@ Route::group(['middleware' => 'visitor'], function() {
     Route::get('/login', 'UserController@login')->name('login');
     Route::post('/login', 'UserController@postLogin')->name('postLogin');
 
+    Route::get('/register', 'RegisterController@index')->name('register');
+    Route::post('/register/store', 'RegisterController@store')->name('postRegister');
+
 });
 
 Route::group(['middleware' => 'admin'], function() {
@@ -61,6 +64,7 @@ Route::group(['middleware' => 'mahasiswa'], function() {
     Route::post('/mahasiswa/book/vote{id}', 'mahasiswa\BookController@update') ->name('mahasiswa.book.vote');
 
     Route::get('/mahasiswa/leaderboard/index', 'mahasiswa\UserController@leaderboard') ->name('mahasiswa.leaderboard.index');
+    Route::get('/mahasiswa/profile{id}', 'mahasiswa\UserController@profile') ->name('mahasiswa.profile');
 
 });
 
