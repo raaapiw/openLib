@@ -16,9 +16,15 @@ Route::post('/logout', 'UserController@postLogout')->name('postLogout');
 
 Route::group(['middleware' => 'visitor'], function() {
 
-    Route::get('/home', 'UserController@login')->name('home');
+    Route::get('/home', 'FrontController@home')->name('home');
+    Route::get('/catalogue', 'FrontController@catalogue')->name('catalogue');
+    Route::get('/vote', 'FrontController@vote')->name('vote');
+    Route::get('/leaderboard', 'FrontController@leaderboard')->name('leaderboard');
     Route::get('/login', 'UserController@login')->name('login');
     Route::post('/login', 'UserController@postLogin')->name('postLogin');
+
+    Route::get('/register', 'RegisterController@index')->name('register');
+    Route::post('/register/store', 'RegisterController@store')->name('postRegister');
 
 });
 
@@ -61,6 +67,7 @@ Route::group(['middleware' => 'mahasiswa'], function() {
     Route::post('/mahasiswa/book/vote{id}', 'mahasiswa\BookController@update') ->name('mahasiswa.book.vote');
 
     Route::get('/mahasiswa/leaderboard/index', 'mahasiswa\UserController@leaderboard') ->name('mahasiswa.leaderboard.index');
+    Route::get('/mahasiswa/profile{id}', 'mahasiswa\UserController@profile') ->name('mahasiswa.profile');
 
 });
 

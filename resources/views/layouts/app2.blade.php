@@ -125,7 +125,7 @@
                         <button class="tablink" onclick="window.location.href='{{ route('mahasiswa.review.index')}}'">Catalogue</button>
                         <button class="tablink" onclick="window.location.href='{{ route('mahasiswa.vote.index')}}'">Vote</button>
                         <button class="tablink" onclick="window.location.href='{{ route('mahasiswa.leaderboard.index')}}'">Leaderboard</button>
-                        @else
+                        @elseif(Sentinel::getUser()->roles()->first()->slug == 'visitor')
                         <button class="tablink" onclick="window.location.href='{{ route('visitor.dashboard')}}'">Home</button>
                         <button class="tablink" onclick="window.location.href='{{ route('visitor.review.index')}}'">Catalogue</button>
                         <button class="tablink" onclick="window.location.href='{{ route('visitor.vote.index')}}'">Vote</button>
@@ -141,7 +141,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             @if(Sentinel::getUser()->roles()->first()->slug == 'mahasiswa')
-                            <a><span class="label label-custom1">{{ Sentinel::getUser()->name }}</span></a>
+                            <a href="{{ route('mahasiswa.profile', Sentinel::getUser()->id)}}"><span class="label label-custom1">{{ Sentinel::getUser()->name }}</span></a>
                             <a href="javascript:void(0);" onclick="$(this).find('form').submit();"><span class="label label-danger">Logout<form action="{{ route('postLogout') }}" method="POST"></form></span></a>
                             @else
                             <a href=""><span class="label label-custom">Login</span></a>

@@ -1,21 +1,50 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\User;
-use Sentinel;
 
-class RegisterController extends Controller
+use Illuminate\Http\Request;
+use \Input as Input;
+use Sentinel;
+use App\Book;
+use App\User;
+use App\Review;
+
+class FrontController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function home(){
+        $realese = Book::orderBy('updated_at','DESC')->take(7)->get();
+        $books = Book::orderBy('votes','DESC')->take(3)->get();
+        $reviews = Review::orderBy('updated_at','DESC')->take(3)->get();
+        $user = User::orderBy('reviews','DESC')->take(1)->first();
+        return view('pages.home', compact('realese', 'books', 'reviews', 'user'));
+    }
+
+    public function catalogue(){
+        $books = Book::where('votes','>=',10)->get();
+        return view('pages.catalogue', compact('books'));
+    }
+
+    public function vote(){
+        $books = Book::where('votes','<',10)->get();
+        $book = Book::orderBy('votes','DESC')->take(1)->first();
+        return view('pages.vote', compact('books', 'book'));
+    }
+
+    public function leaderboard(){
+
+        $users = User::orderBy('reviews','DESC')->take(7)->get();
+        return view('pages.leaderboard', compact('users'));
+
+    }
     public function index()
     {
         //
-        return view('register');
     }
 
     /**
@@ -37,21 +66,6 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         //
-        $data = [
-            'name'      => $request->name,
-            'gender'    => $request->gender,
-            'email'     => $request->email,
-            'username'  => $request->username,
-            'password'  => $request->password,
-            'faculty'  => $request->faculty,
-            'reviews'  => 0,
-        ];
-        // dd($data);
-        $user = Sentinel::registerAndActivate($data);
-        $role = Sentinel::findRoleBySlug('mahasiswa');
-        $user->roles()->attach($role);
-
-        return redirect()->route('login');
     }
 
     /**

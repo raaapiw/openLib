@@ -55,7 +55,17 @@ class VoteController extends Controller
         ];
         // dd($data);
         $vote = Vote::create($data);
+        $user = User::where('id','=',Sentinel::getUser()->id)->first();
+        // dd($book);
+        $reviews = $user->reviews + 5;
+        // dd($vote);
+        $data_user = [
+            'reviews' => $reviews,
+        ];
 
+        // dd($data_book);
+        $user->fill($data_user)->save();
+        
         $book = Book::where('id','=',$request->book_id)->first();
         // dd($book);
         $vote = $book->votes + 1;
