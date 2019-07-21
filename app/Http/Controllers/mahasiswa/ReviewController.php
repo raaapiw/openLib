@@ -23,7 +23,7 @@ class ReviewController extends Controller
     {
         //
         // $reviews = Review::where('user_id','=', Sentinel::getUser()->id)->get();
-        $books = Book::all();
+        $books = Book::where('votes','>=',10)->get();
 
         return view('pages.mahasiswa.review.index', compact('books'));
     }
@@ -33,8 +33,9 @@ class ReviewController extends Controller
         //
         $reviews = Review::where('book_id','=', $id)->get();
         $book = Book::find($id);
+        $books = Book::orderBy('votes','DESC')->take(3)->get();
 
-        return view('pages.mahasiswa.review.detail', compact('book', 'reviews'));
+        return view('pages.mahasiswa.review.detail', compact('book', 'reviews', 'books'));
     }
 
     /**

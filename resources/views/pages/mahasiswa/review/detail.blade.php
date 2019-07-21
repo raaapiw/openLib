@@ -39,15 +39,11 @@
                 <h3 class="card-title">Top Vote</h3>
             </div>
             <div class="col-sm-8">
-                <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
-                <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
+                @foreach($books as $key=>$row)
+                <a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
+                <p align="center" style="color:black;"><b>{{$row->nama_buku}}</b></p>
                 <br>
-                <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
-                <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
-                <br>
-                <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
-                <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
-                <br>
+                @endforeach
             </div>
             </center>
         </div>
@@ -69,9 +65,9 @@
                         <div class="d-flex flex-row comment-row">
                             <div class="p-2"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" width="50"></div>
                             <div class="comment-text w-100">
-                                <p style="color: black;"><b>Kim Do Young</b> for <b><u>Ask Again, Yes</u></b></p>
-                                <p style="color: black;">"Light but Deep"</p>
-                                <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+                                <p style="color: black;"><b>{{$row->user->name}}</b> for <b><u>{{$row->book->nama_buku}}</u></b></p>
+                                <p style="color: black;">"{{$row->keterangan}}"</p>
+                                <p class="m-b-5">{{$row->review}}</p>
                             </div>
                         </div>
                     @endforeach

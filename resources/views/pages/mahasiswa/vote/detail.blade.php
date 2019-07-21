@@ -50,15 +50,11 @@
                 <h3 class="card-title">Top Vote</h3>
             </div>
             <div class="col-sm-8">
-                <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
-                <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
+                @foreach($books as $key=>$row)
+                <a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
+                <p align="center" style="color:black;"><b>{{$row->nama_buku}}</b></p>
                 <br>
-                <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
-                <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
-                <br>
-                <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
-                <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
-                <br>
+                @endforeach
             </div>
             </center>
         </div>

@@ -20,8 +20,10 @@ class VoteController extends Controller
     public function index()
     {
         //
-        $books = Book::all();
-        return view('pages.mahasiswa.vote.index', compact('books'));
+        $books = Book::where('votes','<',10)->get();
+        $book = Book::orderBy('votes','DESC')->take(1)->first();
+        // dd($book);
+        return view('pages.mahasiswa.vote.index', compact('books', 'book'));
     }
 
     /**
@@ -98,8 +100,9 @@ class VoteController extends Controller
     {
         //
         $book = Book::find($id);
+        $books = Book::orderBy('votes','DESC')->take(3)->get();
 
-        return view('pages.mahasiswa.vote.detail', compact('book'));
+        return view('pages.mahasiswa.vote.detail', compact('book','books'));
     }
     /**
      * Update the specified resource in storage.

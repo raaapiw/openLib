@@ -1,15 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\mahasiswa;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use \Input as Input;
-use Sentinel;
-use App\Book;
-use Storage;
 
-class BookController extends Controller
+class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,7 +24,6 @@ class BookController extends Controller
     public function create()
     {
         //
-        return view('pages.mahasiswa.book.form');
     }
 
     /**
@@ -41,30 +35,20 @@ class BookController extends Controller
     public function store(Request $request)
     {
         //
-        $uploadedFile = $request->file('cover');
-
-        // dd($uploadedFile);
-        $text = str_replace(' ', '', $request->title);
-        $uploadedFileName = $text . '-' . $uploadedFile->getClientOriginalName();;
-
-        if (Storage::exists($uploadedFileName)) {
-            Storage::delete($uploadedFileName);
-        }
-        $path = $uploadedFile->storeAs('public/files/cover', $uploadedFileName);
-
         $data = [
-            'user_id' => Sentinel::getUser()->id,
-            'cover'=> $uploadedFileName,
-            'nama_buku' => $request->title,
-            'pengarang' => $request->author,
-            'synopsis' => $request->synopsis,
-            'penerbit' => $request->publisher,
-            'votes' =>0
+            'name'      => $request->name,
+            'gender'    => $request->gender,
+            'email'     => $request->email,
+            'username'  => $request->username,
+            'password'  => $request->password,
+            'faculty'  => $request->password,
+            'reviews'  => 0
         ];
-        // dd($data);
-        $book = Book::create($data);
-        // dd($report);
-        return redirect()->route('mahasiswa.dashboard');
+
+        $user = Sentinel::registerAndActivate($data);
+        $role = Sentinel::findRoleBySlug('mahasiswa');
+        $user->roles()->attach($role);
+
     }
 
     /**
@@ -99,14 +83,6 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $book = Book::find($id);
-        $vote = $book->votes + 1;
-        $data = [
-            'votes' => $vote,
-        ];
-
-        // dd($data);
-        $book->fill($data)->save();
     }
 
     /**

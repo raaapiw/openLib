@@ -29,20 +29,38 @@
                             @foreach($books as $key=>$row)
                                 <tr>
                                     <td><center>{{$key+1}}</center></td>
-                                    <td><a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a></td>
+                                    <td>
+                                        @if(isset($row->cover))
+                                            <a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
+                                        @else
+
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="sl-right">
                                             <div>
                                                 <div class="m-t-20 row">
                                                     <div class="col-md-9 col-xs-12">
-                                                        <p>{{$row->synopsis}}</p>
+                                                        <p align="justify" style="color:black;">
+                                                            <b>{{$row->nama_buku}}</b><br>
+                                                            "bintang"<br>
+                                                            <img src="{{asset('material/images/author.png')}}" alt="">&nbsp;&nbsp;{{$row->pengarang}}<br>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td><center>{{$row->votes}}</center></td>
-                                    <td><center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center></td>
+                                    <td>
+                                        {{-- {{$id = Sentinel::getUser()->id}} --}}
+                                        {{-- @if($row->votes->user_id == $id) --}}
+                                        <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
+                                        {{-- @else --}}
+                                        {{-- <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-danger">Voted</a></center> --}}
+
+                                        {{-- @endif --}}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -71,10 +89,13 @@
                 <h3 class="card-title">Winner of the last event</h3>
             </div>
             <div class="col-sm-8">
-                    <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
-                    <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
+                @if(@isset($book->cover))
+                    <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" width="120px" height="180px" alt=""></a>
+                    <p align="center" style="color:black;"><b>{{$book->nama_buku}}</b></p>
                     <br>
                     <br>
+                @else
+                @endif
             </div>
             </center>
         </div>

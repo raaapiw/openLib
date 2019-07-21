@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/Logo.png')}}">
     <title>Open Library</title>
     <!-- Bootstrap Core CSS -->
     {{--  <link href="../material/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">  --}}
@@ -41,7 +41,7 @@
   <div class="login-box card">
     <div class="card-body">
       <form class="form-horizontal form-material" id="loginform" action="{{ route('postLogin') }}" method="POST">
-        <a href="javascript:void(0)" class="text-center db"><img src="{{ asset('material/images/logo-icon.png')}}" alt="Home" /><br/> <img src="{{ asset('material/images/logo-text.png')}}" alt="Home" /></a>
+        <a href="javascript:void(0)" class="text-center db"><img src="{{ asset('material/images/Logo.png')}}" alt="Home" /><br/></a>
 
         @if(session('error'))
         <div class="form-group m-t-30">
