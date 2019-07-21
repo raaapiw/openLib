@@ -16,7 +16,10 @@ Route::post('/logout', 'UserController@postLogout')->name('postLogout');
 
 Route::group(['middleware' => 'visitor'], function() {
 
-    Route::get('/home', 'UserController@login')->name('home');
+    Route::get('/home', 'FrontController@home')->name('home');
+    Route::get('/catalogue', 'FrontController@catalogue')->name('catalogue');
+    Route::get('/vote', 'FrontController@vote')->name('vote');
+    Route::get('/leaderboard', 'FrontController@leaderboard')->name('leaderboard');
     Route::get('/login', 'UserController@login')->name('login');
     Route::post('/login', 'UserController@postLogin')->name('postLogin');
 
