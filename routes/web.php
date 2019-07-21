@@ -45,20 +45,20 @@ Route::group(['middleware' => 'mahasiswa'], function() {
     Route::get('/mahasiswa/recommedBook/list', 'mahasiswa\RecommendController@index') ->name('mahasiswa.recommend.list');
 
     Route::get('/mahasiswa/vote/add', 'mahasiswa\VoteController@show') ->name('mahasiswa.vote.show');
-    Route::get('/mahasiswa/vote/form', 'mahasiswa\VoteController@create') ->name('mahasiswa.vote.form');
-    Route::get('/mahasiswa/vote/store', 'mahasiswa\VoteController@store') ->name('mahasiswa.vote.store');
+    Route::get('/mahasiswa/vote/detail{id}', 'mahasiswa\VoteController@detail') ->name('mahasiswa.vote.detail');
+    Route::post('/mahasiswa/vote/store', 'mahasiswa\VoteController@store') ->name('mahasiswa.vote.store');
     Route::get('/mahasiswa/vote/update{id}', 'mahasiswa\VoteController@update') ->name('mahasiswa.vote.update');
     Route::get('/mahasiswa/vote/index', 'mahasiswa\VoteController@index') ->name('mahasiswa.vote.index');
 
     Route::get('/mahasiswa/review/form', 'mahasiswa\ReviewController@create') ->name('mahasiswa.review.form');
-    Route::get('/mahasiswa/review/store', 'mahasiswa\ReviewController@store') ->name('mahasiswa.review.store');
+    Route::post('/mahasiswa/review/store', 'mahasiswa\ReviewController@store') ->name('mahasiswa.review.store');
     Route::get('/mahasiswa/review/update{id}', 'mahasiswa\ReviewController@update') ->name('mahasiswa.review.update');
-    Route::get('/mahasiswa/review/list', 'mahasiswa\ReviewController@index') ->name('mahasiswa.review.list');
     Route::get('/mahasiswa/review/index', 'mahasiswa\ReviewController@index') ->name('mahasiswa.review.index');
-    Route::get('/mahasiswa/review/detail', 'mahasiswa\ReviewController@detail') ->name('mahasiswa.review.detail');
+    Route::get('/mahasiswa/review/detail{id}', 'mahasiswa\ReviewController@detail') ->name('mahasiswa.review.detail');
 
     Route::get('/mahasiswa/book/add', 'mahasiswa\BookController@create') ->name('mahasiswa.book.add');
     Route::post('/mahasiswa/book/store', 'mahasiswa\BookController@store') ->name('mahasiswa.book.store');
+    Route::post('/mahasiswa/book/vote{id}', 'mahasiswa\BookController@update') ->name('mahasiswa.book.vote');
 
     Route::get('/mahasiswa/leaderboard/index', 'mahasiswa\UserController@leaderboard') ->name('mahasiswa.leaderboard.index');
 

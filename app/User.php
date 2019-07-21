@@ -46,6 +46,8 @@ class User extends \Cartalyst\Sentinel\Users\EloquentUser
         'permissions',
         'name',
         'gender',
+        'reviews',
+        'photo'
     ];
 
     protected $appends = ['image'];

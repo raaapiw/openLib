@@ -30,27 +30,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($users as $key=>$row)
                             <tr>
-                                <td>1</td>
-                                <td>Nigga</td>
-                                <td><center><img src="{{asset('material/images/crown.png')}}" alt=""height="25px" width="25px"></center></td>
+                                <td><center>{{$key+1}}</center></td>
+                                <td>{{$row->name}}</td>
+                                <td id="detailInfo" ></td>
                                 <td>FEB</td>
-                                <td>1000</td>
+                                <td>{{$row->reviews * 10}}</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Deshmukh</td>
-                                <td></td>
-                                <td>FIT</td>
-                                <td>500</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Roshan</td>
-                                <td></td>
-                                <td>FIK</td>
-                                <td>100</td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -61,7 +49,10 @@
 @endsection
 
 @section('script')
-
+<center><img src="{{asset('material/images/crown.png')}}" alt=""height="25px" width="25px"></center>
+<script>
+$('#detailInfo').html('<center><img src="{{asset('material/images/crown.png')}}" alt=""height="25px" width="25px"></center>');
+</script>
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
 @endsection

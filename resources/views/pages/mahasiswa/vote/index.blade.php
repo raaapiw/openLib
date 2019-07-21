@@ -26,24 +26,43 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach($shippings as $key=>$row) --}}
+                            @foreach($books as $key=>$row)
                                 <tr>
-                                    <td>1</td>
-                                    <td><a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a></td>
+                                    <td><center>{{$key+1}}</center></td>
+                                    <td>
+                                        @if(isset($row->cover))
+                                            <a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
+                                        @else
+
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="sl-right">
                                             <div>
                                                 <div class="m-t-20 row">
                                                     <div class="col-md-9 col-xs-12">
-                                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p></div>
+                                                        <p align="justify" style="color:black;">
+                                                            <b>{{$row->nama_buku}}</b><br>
+                                                            "bintang"<br>
+                                                            <img src="{{asset('material/images/author.png')}}" alt="">&nbsp;&nbsp;{{$row->pengarang}}<br>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td><center>18 Votes</center></td>
-                                    <td><center><a href="#" class="btn btn-success"> Vote</a></center></td>
+                                    <td><center>{{$row->votes}}</center></td>
+                                    <td>
+                                        {{-- {{$id = Sentinel::getUser()->id}} --}}
+                                        {{-- @if($row->votes->user_id == $id) --}}
+                                        <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
+                                        {{-- @else --}}
+                                        {{-- <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-danger">Voted</a></center> --}}
+
+                                        {{-- @endif --}}
+                                    </td>
                                 </tr>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -70,11 +89,13 @@
                 <h3 class="card-title">Winner of the last event</h3>
             </div>
             <div class="col-sm-8">
-                    <a href=""><img src="{{asset('material/images/marmut.jpg')}}" width="120px" height="180px" alt=""></a>
-                    <p align="center" style="color:black;"><b>Marmut Merah Jambu</b></p>
-                    <a href="#" class="btn btn-success">Vote</a>
+                @if(@isset($book->cover))
+                    <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" width="120px" height="180px" alt=""></a>
+                    <p align="center" style="color:black;"><b>{{$book->nama_buku}}</b></p>
                     <br>
                     <br>
+                @else
+                @endif
             </div>
             </center>
         </div>
@@ -89,4 +110,20 @@
 <script>$('#myTable').DataTable({
         "order": [[ 0, "asc" ]]
     });</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.btn').click(function(){
+            var currentValue = $(this).attr("id");
+            $.ajax({
+                url: '{{ route('mahasiswa.vote.store')}}',
+                method: 'post',
+                data: {id:currentValue , vote: 1.val()},
+                success: function(data){
+                    alert(data);
+                },
+                error: function(){},
+            });
+        });
+    });
+</script>
 @endsection

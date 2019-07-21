@@ -8,6 +8,7 @@ use \Input as Input;
 use Sentinel;
 use App\Recommendbook;
 use App\Vote;
+use App\Book;
 
 class VoteController extends Controller
 {
@@ -19,8 +20,10 @@ class VoteController extends Controller
     public function index()
     {
         //
-
-        return view('pages.mahasiswa.vote.index');
+        $books = Book::where('votes','<',10)->get();
+        $book = Book::orderBy('votes','DESC')->take(1)->first();
+        // dd($book);
+        return view('pages.mahasiswa.vote.index', compact('books', 'book'));
     }
 
     /**
@@ -44,6 +47,27 @@ class VoteController extends Controller
     public function store(Request $request)
     {
         //
+
+        $data = [
+            'user_id' => Sentinel::getUser()->id,
+            'book_id' => $request->book_id,
+            'vote'=>1
+        ];
+        // dd($data);
+        $vote = Vote::create($data);
+
+        $book = Book::where('id','=',$request->book_id)->first();
+        // dd($book);
+        $vote = $book->votes + 1;
+        // dd($vote);
+        $data_book = [
+            'votes' => $vote,
+        ];
+
+        // dd($data_book);
+        $book->fill($data_book)->save();
+
+        return redirect()->route('mahasiswa.vote.index');
     }
 
     /**
@@ -72,6 +96,14 @@ class VoteController extends Controller
         //
     }
 
+    public function detail($id)
+    {
+        //
+        $book = Book::find($id);
+        $books = Book::orderBy('votes','DESC')->take(3)->get();
+
+        return view('pages.mahasiswa.vote.detail', compact('book','books'));
+    }
     /**
      * Update the specified resource in storage.
      *

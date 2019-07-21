@@ -18,7 +18,7 @@ class CreateReviewsTable extends Migration
             $table->integer('book_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('keterangan')->nullable();
-            $table->integer('review')->unsigned();
+            $table->string('review')->nullable();
             $table->timestamps();
 
             $table->foreign('book_id')

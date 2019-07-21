@@ -44,7 +44,8 @@ class BookController extends Controller
         $uploadedFile = $request->file('cover');
 
         // dd($uploadedFile);
-        $uploadedFileName = $request->title;
+        $text = str_replace(' ', '', $request->title);
+        $uploadedFileName = $text . '-' . $uploadedFile->getClientOriginalName();;
 
         if (Storage::exists($uploadedFileName)) {
             Storage::delete($uploadedFileName);
@@ -53,11 +54,12 @@ class BookController extends Controller
 
         $data = [
             'user_id' => Sentinel::getUser()->id,
-            'cover'=> $path,
+            'cover'=> $uploadedFileName,
             'nama_buku' => $request->title,
             'pengarang' => $request->author,
             'synopsis' => $request->synopsis,
             'penerbit' => $request->publisher,
+            'votes' =>0
         ];
         // dd($data);
         $book = Book::create($data);
@@ -97,6 +99,14 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $book = Book::find($id);
+        $vote = $book->votes + 1;
+        $data = [
+            'votes' => $vote,
+        ];
+
+        // dd($data);
+        $book->fill($data)->save();
     }
 
     /**

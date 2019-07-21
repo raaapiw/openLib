@@ -1,14 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\mahasiswa;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use \Input as Input;
-use Sentinel;
-use App\Recommendbook;
 
-class RecommendController extends Controller
+class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +14,6 @@ class RecommendController extends Controller
     public function index()
     {
         //
-        $recommends = Recommendbook::all();
-        return view('pages.mahasiswa.recommend.list', compact('recommends'));
     }
 
     /**
@@ -30,7 +24,6 @@ class RecommendController extends Controller
     public function create()
     {
         //
-        return view ('pages.mahasiswa.recommend.form');
     }
 
     /**
@@ -42,6 +35,20 @@ class RecommendController extends Controller
     public function store(Request $request)
     {
         //
+        $data = [
+            'name'      => $request->name,
+            'gender'    => $request->gender,
+            'email'     => $request->email,
+            'username'  => $request->username,
+            'password'  => $request->password,
+            'faculty'  => $request->password,
+            'reviews'  => 0
+        ];
+
+        $user = Sentinel::registerAndActivate($data);
+        $role = Sentinel::findRoleBySlug('mahasiswa');
+        $user->roles()->attach($role);
+
     }
 
     /**
@@ -64,9 +71,6 @@ class RecommendController extends Controller
     public function edit($id)
     {
         //
-        $recommend = Recommend::find($id);
-
-        return view('pages.mahasiswa.form', compact('recommend'));
     }
 
     /**
