@@ -9,6 +9,7 @@ use Sentinel;
 use App\Recommendbook;
 use App\Vote;
 use App\Book;
+use App\User;
 
 class VoteController extends Controller
 {
@@ -65,7 +66,7 @@ class VoteController extends Controller
 
         // dd($data_book);
         $user->fill($data_user)->save();
-        
+
         $book = Book::where('id','=',$request->book_id)->first();
         // dd($book);
         $vote = $book->votes + 1;
