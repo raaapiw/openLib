@@ -1,0 +1,67 @@
+@extends('layouts.app3')
+
+@section('style')
+
+<link href= "{{asset('material/plugins/Magnific-Popup-master/dist/magnific-popup.css')}}" rel="stylesheet">
+@endsection
+
+@section('content')
+<div class="row">
+    <div class="col-lg-3">
+        <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" alt=""></a>
+    </div>
+    <div class="col-lg-9">
+        <h1>{{$book->nama_buku}}</h1>
+        <p align="justify" style="color:black;">
+            <img src="{{asset('material/images/author.png')}}" alt=""> {{$book->pengarang}}&nbsp;&nbsp;<img src="{{asset('material/images/publisher.png')}}" alt="">&nbsp;&nbsp;{{$book->penerbit}} <br>
+            bintang&nbsp;&nbsp;<img src="{{asset('material/images/review.png')}}" alt="">&nbsp;{{$book->reviews}} people review this book <br>
+            <b>Synopsis:</b><br>
+            {{$book->synopsis}}
+        </p>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-9">
+        <div class="card" style="border-style: solid; border-width: 5px; background-color:#E2DCC4">
+            <div class="card-body" >
+                <h3 class="card-title">Review</h3> </div>
+            <!-- ============================================================== -->
+            <!-- Comment widgets -->
+            <!-- ============================================================== -->
+            <div class="">
+                <!-- Comment Row -->
+                <form action="" method="POST" enctype="multipart/form-data">
+                    @foreach($reviews as $key=>$row)
+                        <div class="d-flex flex-row comment-row">
+                            <div class="p-2"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" width="50"></div>
+                            <div class="comment-text w-100">
+                                <p style="color: black;"><b>{{$row->user->name}}</b> for <b><u>{{$row->book->nama_buku}}</u></b></p>
+                                <p style="color: black;">"{{$row->keterangan}}"</p>
+                                <p class="m-b-5" style="color: black;">{{$row->review}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                    @endforeach
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('script')
+
+<script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
+<script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
+@endsection
+{{-- <div class="card">
+    <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
+    <div class="card-body">
+        <h4 class="card-title">Card title</h4>
+        <a href="#" class="btn btn-warning">Review</a>
+    </div>
+</div> --}}
