@@ -48,7 +48,7 @@
                             "bintang"<br>
                             <img src="{{asset('material/images/author.png')}}" alt="">{{$row->pengarang}}<br>
                             <img src="{{asset('material/images/review.png')}}" alt="">&nbsp;&nbsp;{{$row->reviews}}&nbsp; people reviewing this<br>
-                            <a href="{{ route('mahasiswa.review.detail', $row->id)}}" class="btn btn-warning">Review</a>
+                            <a href="{{ route('detailCatalogue', $row->id)}}" class="btn btn-warning">Review</a>
                         </p>
                     </td>
                 </tr>

@@ -34,7 +34,7 @@
                 <div class="row">
                     @foreach($realese as $row)
                     <div class="col-lg-2">
-                        <a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
+                        <a href="{{ route('detailCatalogue', $row->id)}}"><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
                         <p align="center" style="color:black;"><b>{{$row->nama_buku}}</b></p>
                     </div>
                     @endforeach

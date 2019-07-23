@@ -55,7 +55,7 @@
                                     <td>
                                         {{-- {{$id = Sentinel::getUser()->id}} --}}
                                         {{-- @if($row->votes->user_id == $id) --}}
-                                        <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
+                                        <center><a href="#" class="btn btn-success">Vote</a></center>
                                         {{-- @else --}}
                                         {{-- <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-danger">Voted</a></center> --}}
 
@@ -78,7 +78,7 @@
             </font>
             <br>
             <br>
-            <a href="{{route('mahasiswa.book.add')}}" class="btn btn-success">Add Book</a>
+            <a href="#" class="btn btn-success">Add Book</a>
 
         </center>
         <br>

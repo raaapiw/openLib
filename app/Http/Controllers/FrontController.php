@@ -42,6 +42,17 @@ class FrontController extends Controller
         return view('pages.leaderboard', compact('users'));
 
     }
+
+    public function detailCatalogue($id)
+    {
+        //
+        $reviews = Review::where('book_id','=', $id)->get();
+        $book = Book::find($id);
+        $books = Book::orderBy('votes','DESC')->take(3)->get();
+
+        return view('pages.detailCatalogue', compact('book', 'reviews', 'books'));
+    }
+
     public function index()
     {
         //
