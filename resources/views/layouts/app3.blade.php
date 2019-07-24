@@ -331,7 +331,9 @@
 
     <script src="{{ asset('material/plugins/d3/d3.min.js') }}"></script>
     <script src="{{ asset('material/plugins/c3-master/c3.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     @yield('script')
+    @include('sweetalert::alert')
 </body>
 
 </html>

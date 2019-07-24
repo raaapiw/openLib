@@ -8,6 +8,7 @@ use Sentinel;
 use App\Book;
 use App\User;
 use App\Review;
+Use Alert;
 
 class FrontController extends Controller
 {
