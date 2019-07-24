@@ -7,10 +7,11 @@
 
 @section('content')
 <br>
+
 <div class="row ">
     <div class="col-md-12">
         <center>
-            <form action="{{ url()->current() }}">
+            <form action="{{ route('query') }}">
                 <div class="col-md-10">
                     <input type="text" name="keyword" class="form-control" placeholder="Search what you're going to review . . ."/>
                 </div>

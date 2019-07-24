@@ -9,6 +9,7 @@ use App\Book;
 use App\User;
 use App\Review;
 Use Alert;
+use App\CRUD;
 
 class FrontController extends Controller
 {
@@ -18,6 +19,12 @@ class FrontController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function search(Request $request){
+        $query = $request->get('keyword');
+        $hasil = Crud::where('judul', 'LIKE', '%' . $query . '%')->paginate(10);
+
+        return view('home', compact('hasil', 'query'));
+    }
     public function home(){
         $realese = Book::orderBy('updated_at','DESC')->take(7)->get();
         $books = Book::orderBy('votes','DESC')->take(3)->get();
