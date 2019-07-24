@@ -43,6 +43,7 @@
                                                     <div class="col-md-9 col-xs-12">
                                                         <p align="justify" style="color:black;">
                                                             <b>{{$row->nama_buku}}</b><br>
+
                                                             "bintang"<br>
                                                             <img src="{{asset('material/images/author.png')}}" alt="">&nbsp;&nbsp;{{$row->pengarang}}<br>
                                                         </p>
@@ -55,7 +56,8 @@
                                     <td>
                                         {{-- {{$id = Sentinel::getUser()->id}} --}}
                                         {{-- @if($row->votes->user_id == $id) --}}
-                                        <center><a href="#" class="btn btn-success">Vote</a></center>
+                                        {{-- <button onclick="sweet()">Sweet Alert</button> --}}
+                                        <center><a href="" onclick="sweet()" class="btn btn-success">Vote</a></center>
                                         {{-- @else --}}
                                         {{-- <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-danger">Voted</a></center> --}}
 
@@ -78,7 +80,7 @@
             </font>
             <br>
             <br>
-            <a href="#" class="btn btn-success">Add Book</a>
+            <a href="#" onclick="sweet()" class="btn btn-success">Add Book</a>
 
         </center>
         <br>
@@ -104,26 +106,17 @@
 @endsection
 
 @section('script')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
 <script>$('#myTable').DataTable({
         "order": [[ 0, "asc" ]]
-    });</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.btn').click(function(){
-            var currentValue = $(this).attr("id");
-            $.ajax({
-                url: '{{ route('mahasiswa.vote.store')}}',
-                method: 'post',
-                data: {id:currentValue , vote: 1.val()},
-                success: function(data){
-                    alert(data);
-                },
-                error: function(){},
-            });
-        });
     });
+    </script>
+<script>
+function sweet (){
+    swal("You Should Login first", "", "warning");
+}
 </script>
 @endsection

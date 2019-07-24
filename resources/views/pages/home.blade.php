@@ -51,7 +51,10 @@
             <div class="col-sm-8">
                 @foreach($books as $key=>$row)
                 <a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
-                <p align="center" style="color:black;"><b>{{$row->nama_buku}}</b><br><a href="#" class="btn btn-success">Vote</a></p>
+                <p align="center" style="color:black;"><b>{{$row->nama_buku}}</b><br>
+                </p>
+                <a href="" onclick="sweet()" class="btn btn-success">Vote</a>
+                <br>
                 <br>
                 @endforeach
                 <br>
@@ -106,13 +109,12 @@
 
 @section('script')
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
+<script>
+function sweet (){
+        swal("You Should Login first", "", "warning");
+    }
+</script>
 @endsection
-{{-- <div class="card">
-    <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-    <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <a href="#" class="btn btn-warning">Review</a>
-    </div>
-</div> --}}
