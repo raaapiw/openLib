@@ -165,8 +165,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Backpack\Base\BaseServiceProvider::class,
-        Backpack\CRUD\CrudServiceProvider::class,
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 

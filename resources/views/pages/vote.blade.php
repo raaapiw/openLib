@@ -57,7 +57,7 @@
                                         {{-- {{$id = Sentinel::getUser()->id}} --}}
                                         {{-- @if($row->votes->user_id == $id) --}}
                                         {{-- <button onclick="sweet()">Sweet Alert</button> --}}
-                                        <center><a href="" onclick="sweet()" class="btn btn-success">Vote</a></center>
+                                        <center><a href="#" onclick="sweet()" class="btn btn-success">Vote</a></center>
                                         {{-- @else --}}
                                         {{-- <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-danger">Voted</a></center> --}}
 
@@ -116,7 +116,7 @@
     </script>
 <script>
 function sweet (){
-    swal("You Should Login first", "", "warning");
+    swal.fire("You Should Login first", "", "warning");
 }
 </script>
 @endsection
