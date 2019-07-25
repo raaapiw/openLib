@@ -9,7 +9,7 @@ use App\Book;
 use App\User;
 use App\Review;
 Use Alert;
-use App\CRUD;
+use App\crud;
 
 class FrontController extends Controller
 {
@@ -21,7 +21,7 @@ class FrontController extends Controller
 
     public function search(Request $request){
         $query = $request->get('keyword');
-        $hasil = Crud::where('judul', 'LIKE', '%' . $query . '%')->paginate(10);
+        $hasil = CRUD::where('nama_buku', 'LIKE', '%' . $query . '%')->paginate(10);
 
         return view('home', compact('hasil', 'query'));
     }
