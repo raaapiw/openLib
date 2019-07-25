@@ -7,10 +7,11 @@
 
 @section('content')
 <br>
+
 <div class="row ">
     <div class="col-md-12">
         <center>
-            <form action="{{ url()->current() }}">
+            <form action="{{ route('query') }}">
                 <div class="col-md-10">
                     <input type="text" name="keyword" class="form-control" placeholder="Search what you're going to review . . ."/>
                 </div>
@@ -53,7 +54,7 @@
                 <a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
                 <p align="center" style="color:black;"><b>{{$row->nama_buku}}</b><br>
                 </p>
-                <a href="" onclick="sweet()" class="btn btn-success">Vote</a>
+                <a href="#" onclick="sweet()" class="btn btn-success">Vote</a>
                 <br>
                 <br>
                 @endforeach
@@ -114,7 +115,7 @@
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
 <script>
 function sweet (){
-        swal("You Should Login first", "", "warning");
+        swal.fire("You Should Login first", "", "warning");
     }
 </script>
 @endsection
