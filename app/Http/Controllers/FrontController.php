@@ -19,11 +19,19 @@ class FrontController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function search(Request $request){
-        $query = $request->get('keyword');
-        $hasil = CRUD::where('nama_buku', 'LIKE', '%' . $query . '%')->paginate(10);
+    public function simpleSearch(Request $request){
+        $books = Book::when($request->keyword, function ($query) use ($request) {
+            $query->where('nama_buku', 'like', "%{$request->keyword}%")
+                ->orWhere('pengarang', 'like', "%{$request->keyword}%")
+                ->orWhere('penerbit', 'like', "%{$request->keyword}%")
+                ->orWhere('jenis', 'like', "%{$request->keyword}%")
+                ->orWhere('penyunting', 'like', "%{$request->keyword}%")
+                // ->orWhere('tahun_terbit', 'like', "%{$request->keyword}%")
+                ->orWhere('kota_penerbit', 'like', "%{$request->keyword}%");
+        })->paginate();
 
-        return view('home', compact('hasil', 'query'));
+        return view('pages.search', compact('books'));
+
     }
     public function home(){
         $realese = Book::orderBy('updated_at','DESC')->take(7)->get();
