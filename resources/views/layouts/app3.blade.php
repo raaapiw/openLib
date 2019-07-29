@@ -133,8 +133,20 @@
                         <!-- Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a href="{{route('login')}}"><span class="label label-custom">Login</span></a>&nbsp;&nbsp;
-                            <a href="{{route('register')}}"><span class="label label-custom">SignUp</span></a>
+                            <form class="form-horizontal form-material" id="loginform" action="{{ route('postLogin') }}" method="POST">
+                                @if(session('error'))
+                                <div class="form-group m-t-30">
+                                    <div class="col-xs-12">
+                                        <div class="alert alert-danger"> {{ session()->get('error') }} </div>
+                                    </div>
+                                </div>
+                                @endif
+                                <input type="text" name="username" required placeholder="Username">&nbsp;
+                                <input type="password" name="password" required placeholder="Password">&nbsp;
+                                <button type="submit" class="btn waves-effect waves-light btn-xs btn-info">Log In</button>&nbsp;
+                                <a href="{{route('register')}}"><button class="btn waves-effect waves-light btn-xs btn-info" onclick="window.location.href='{{route('register')}}'">Sign Up</button></a>
+                            {{-- <a href="{{route('login')}}"><span class="label label-custom">Login</span></a>&nbsp;&nbsp; --}}
+                            </form>
                             {{-- <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>

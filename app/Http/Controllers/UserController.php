@@ -46,7 +46,7 @@ class UserController extends Controller
     public function postLogout()
     {
         Sentinel::logout();
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 
     public function get()
