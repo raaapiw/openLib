@@ -39,11 +39,11 @@
         <!-- ============================================================== -->
         <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{ asset('material/images/background/library.jpg')}});">
       <div class="login-box card">
-        <div class="card-body">
+        <div class="card-body" style="background-color:darkgray">
           <form class="form-horizontal form-material" id="loginform" method="POST" action="{{route('postRegister') }}">
             <a href="javascript:void(0)" class="text-center db"><img src="{{ asset('material/images/openlib.png')}}" alt="Home"/><br/></a>
             <CENTER><h2>REGISTRATION</h2></CENTER>
-            <div class="form-group m-t-20">
+            <div class="form-group p-t-20">
               <div class="col-xs-12">
                 <input class="form-control" type="text" required="" placeholder="Name" name="name">
               </div>

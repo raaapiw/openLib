@@ -60,7 +60,10 @@ class BookController extends Controller
             'pengarang' => $request->author,
             'synopsis' => $request->synopsis,
             'penerbit' => $request->publisher,
-            'votes' =>0
+            'votes' =>0,
+            'reviews' =>0,
+            'code' => $request->code,
+            'type' => $request->type
         ];
         // dd($data);
         $book = Book::create($data);

@@ -28,6 +28,8 @@ class CreateBooksTable extends Migration
             $table->integer('reviews')->nullable();
             $table->string('cover')->nullable();
             $table->string('synopsis')->nullable();
+            $table->integer('code')->nullable();
+            $table->integer('type')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

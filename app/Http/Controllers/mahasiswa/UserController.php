@@ -15,10 +15,12 @@ class UserController extends Controller
     //
     public function dashboard(){
 
-        $realese = Book::orderBy('updated_at','DESC')->take(7)->get();
-        $books = Book::orderBy('votes','DESC')->take(3)->get();
+        $realesed = Book::where('votes','>=',10);
+        $realese = $realesed->orderBy('updated_at','DESC')->take(7)->get();
+        $book = Book::where('votes','<', 10);
+        $books = $book->orderBy('votes','DESC')->take(3)->get();
         $reviews = Review::orderBy('updated_at','DESC')->take(3)->get();
-        $user = User::orderBy('reviews','DESC')->take(1)->first();
+        $user = User::orderBy('points','DESC')->take(1)->first();
         return view('pages.mahasiswa.dashboard', compact('realese', 'books','reviews','user'));
     }
     public function leaderboard(){

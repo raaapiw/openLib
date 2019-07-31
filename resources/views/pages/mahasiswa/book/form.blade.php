@@ -15,6 +15,31 @@
         <div class="card">
             <div class="col-md-12">
                 <div class="form-group">
+                    <label class="control-label">Types:</label>
+                    <select class="form-control custom-select" name="type">
+                        <option disabled value="">Choose the type of item</option>
+                        <option value="1">Article - Restricted Use</option>
+                        <option value="2">Bahan Ajar</option>
+                        <option value="3">Books - Circulation</option>
+                        <option value="4">Books - Reference</option>
+                        <option value="5">Books - Restricted Use</option>
+                        <option value="6">Case Studies</option>
+                        <option value="7">CD/DVD</option>
+                        <option value="8">Dissertation</option>
+                        <option value="9">E-Article</option>
+                        <option value="10">International Journal</option>
+                        <option value="11">National Journal</option>
+                        <option value="12">Scientific Work - Skripsi</option>
+                        <option value="13">Scientific Work - TA</option>
+                        <option value="14">Scientific Work - Thesis</option>
+                        <option value="15">Magazine</option>
+                        <option value="16">Practicum Module</option>
+                        <option value="17">Proceeding</option>
+                        <option value="18">Research Report</option>
+                        <option value="19">Teaching Note</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label>Title :</label><br>
                     <input  type="text" class="form-control" id="tempat" name="title" >
                 </div>
@@ -25,6 +50,14 @@
                 <div class="form-group">
                     <label>Publisher :</label><br>
                     <input  type="text" class="form-control" id="tempat" name="publisher" >
+                </div>
+                <div class="form-group">
+                    <label>Editor :</label><br>
+                    <input  type="text" class="form-control" id="tempat" name="editor" >
+                </div>
+                <div class="form-group">
+                    <label>Code :</label><br>
+                    <input  type="text" class="form-control" id="tempat" name="code" >
                 </div>
                 <div class="form-group">
                     <label>Synopsis :</label><br>

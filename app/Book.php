@@ -22,7 +22,10 @@ class Book extends Model
         'cover',
         'synopsis',
         'votes',
-        'reviews'
+        'reviews',
+        'points',
+        'type',
+        'code'
     ];
 
     public function user(){

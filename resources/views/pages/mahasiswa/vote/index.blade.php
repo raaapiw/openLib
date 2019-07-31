@@ -1,8 +1,13 @@
 @extends('layouts.app2')
 
 @section('style')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href= "{{asset('material/plugins/Magnific-Popup-master/dist/magnific-popup.css')}}" rel="stylesheet">
+<style>
+.checked {
+  color: orange;
+}
+</style>
 @endsection
 
 @section('content')
@@ -43,7 +48,11 @@
                                                     <div class="col-md-9 col-xs-12">
                                                         <p align="justify" style="color:black;">
                                                             <b>{{$row->nama_buku}}</b><br>
-                                                            "bintang"<br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span><br>
                                                             <img src="{{asset('material/images/author.png')}}" alt="">&nbsp;&nbsp;{{$row->pengarang}}<br>
                                                         </p>
                                                     </div>

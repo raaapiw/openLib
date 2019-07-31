@@ -70,10 +70,12 @@ class ReviewController extends Controller
 
         $user = User::where('id','=',Sentinel::getUser()->id)->first();
         // dd($book);
-        $reviews = $user->reviews + 15;
+        $reviews = $user->reviews + 1;
+        $point = $user->points + 15;
         // dd($vote);
         $data_user = [
             'reviews' => $reviews,
+            'points' =>$point
         ];
 
         // dd($data_book);

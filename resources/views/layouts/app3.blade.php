@@ -10,8 +10,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/favicon.png') }}">
-    <title>Material Pro Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('material/images/Logo.png') }}">
+    <title>Open Library</title>
     <!-- Bootstrap Core CSS -->
     @yield('style')
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
@@ -144,7 +144,8 @@
                                 <input type="text" name="username" required placeholder="Username">&nbsp;
                                 <input type="password" name="password" required placeholder="Password">&nbsp;
                                 <button type="submit" class="btn waves-effect waves-light btn-xs btn-info">Log In</button>&nbsp;
-                                <a href="{{route('register')}}"><button class="btn waves-effect waves-light btn-xs btn-info" onclick="window.location.href='{{route('register')}}'">Sign Up</button></a>
+                                <a class="btn btn-xs btn-info" href="{{route('register')}}">Sign Up</a>
+                                {{-- <button class="btn waves-effect waves-light btn-xs btn-info" onclick="window.location.href='{{route('register')}}'">Sign Up</button> --}}
                             {{-- <a href="{{route('login')}}"><span class="label label-custom">Login</span></a>&nbsp;&nbsp; --}}
                             </form>
                             {{-- <div class="dropdown-menu dropdown-menu-right scale-up">

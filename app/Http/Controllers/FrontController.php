@@ -20,7 +20,8 @@ class FrontController extends Controller
      */
 
     public function simpleSearch(Request $request){
-        $books = Book::when($request->keyword, function ($query) use ($request) {
+        $catbooks = Book::where('votes','>=', 10);
+        $books = $catbooks->when($request->keyword, function ($query) use ($request) {
             $query->where('nama_buku', 'like', "%{$request->keyword}%")
                 ->orWhere('pengarang', 'like', "%{$request->keyword}%")
                 ->orWhere('penerbit', 'like', "%{$request->keyword}%")
@@ -33,11 +34,52 @@ class FrontController extends Controller
         return view('pages.search', compact('books'));
 
     }
+
+    public function advancedSearch(Request $request, Book $book){
+        $catbooks = Book::where('votes','>=', 10);
+        $book = $catbooks->newQuery();
+
+        // Search for a user based on their name.
+        if ($request->has('nama_buku')) {
+            $book->where('nama_buku', $request->input('nama_buku'));
+        }
+
+        // Search for a user based on their company.
+        if ($request->has('pengarang')) {
+            $book->where('pengarang', $request->input('pengarang'));
+        }
+
+        // Search for a user based on their city.
+        if ($request->has('penerbit')) {
+            $book->where('penerbit', $request->input('penerbit'));
+        }
+
+        if ($request->has('type')) {
+            $book->where('type', $request->input('type'));
+        }
+
+        if ($request->has('code')) {
+            $book->where('code', $request->input('code'));
+        }
+
+        if ($request->has('editor')) {
+            $book->where('penyunting', $request->input('editor'));
+        }
+        // Continue for all of the filters.
+
+        // Get the results and return them.
+        $book->get();
+        return view('pages.search', compact('book'));
+
+    }
+
     public function home(){
-        $realese = Book::orderBy('updated_at','DESC')->take(7)->get();
-        $books = Book::orderBy('votes','DESC')->take(3)->get();
+        $realesed = Book::where('votes','>=',10);
+        $realese = $realesed->orderBy('updated_at','DESC')->take(7)->get();
+        $book = Book::where('votes','<', 10);
+        $books = $book->orderBy('votes','DESC')->take(3)->get();
         $reviews = Review::orderBy('updated_at','DESC')->take(3)->get();
-        $user = User::orderBy('reviews','DESC')->take(1)->first();
+        $user = User::orderBy('points','DESC')->take(1)->first();
         return view('pages.home', compact('realese', 'books', 'reviews', 'user'));
     }
 
