@@ -58,10 +58,10 @@ class VoteController extends Controller
         $vote = Vote::create($data);
         $user = User::where('id','=',Sentinel::getUser()->id)->first();
         // dd($book);
-        $reviews = $user->reviews + 5;
+        $point = $user->points +5;
         // dd($vote);
         $data_user = [
-            'reviews' => $reviews,
+            'points' =>$point,
         ];
 
         // dd($data_book);
@@ -77,6 +77,9 @@ class VoteController extends Controller
 
         // dd($data_book);
         $book->fill($data_book)->save();
+
+        $currentVote = Book::where('votes','=', 10)->get();
+
 
         return redirect()->route('mahasiswa.vote.index');
     }

@@ -1,8 +1,13 @@
 @extends('layouts.app2')
 
 @section('style')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href= "{{asset('material/plugins/Magnific-Popup-master/dist/magnific-popup.css')}}" rel="stylesheet">
+<style>
+.checked {
+    color: orange;
+  }
+  </style>
 @endsection
 {{-- @section('breadcumb')
 <div class="row page-titles">
@@ -38,7 +43,12 @@
         <h1>{{$book->nama_buku}}</h1>
         <p align="justify" style="color:black;">
             <img src="{{asset('material/images/author.png')}}" alt=""> {{$book->pengarang}}&nbsp;&nbsp;<img src="{{asset('material/images/publisher.png')}}" alt="">{{$book->penerbit}} <br>
-            bintang&nbsp;&nbsp;<img src="{{asset('material/images/review.png')}}" alt=""> <br>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            &nbsp;&nbsp;<img src="{{asset('material/images/review.png')}}" alt=""> <br>
             <b>Synopsis:</b><br>
             {{$book->synopsis}}
         </p>

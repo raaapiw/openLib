@@ -1,20 +1,14 @@
 @extends('layouts.app2')
 
 @section('style')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href= "{{asset('material/plugins/Magnific-Popup-master/dist/magnific-popup.css')}}" rel="stylesheet">
+<style>
+.checked {
+    color: orange;
+  }
+  </style>
 @endsection
-{{-- @section('breadcumb')
-<div class="row page-titles">
-    <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Home</h3>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Home</li>
-        </ol>
-    </div>
-</div>
-@endsection --}}
 
 @section('content')
 <div class="row">
@@ -25,7 +19,12 @@
         <h1>{{$book->nama_buku}}</h1>
         <p align="justify" style="color:black;">
             <img src="{{asset('material/images/author.png')}}" alt=""> {{$book->pengarang}}&nbsp;&nbsp;<img src="{{asset('material/images/publisher.png')}}" alt="">&nbsp;&nbsp;{{$book->penerbit}} <br>
-            bintang&nbsp;&nbsp;<img src="{{asset('material/images/review.png')}}" alt="">&nbsp;{{$book->reviews}} people review this book <br>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            &nbsp;&nbsp;<img src="{{asset('material/images/review.png')}}" alt="">&nbsp;{{$book->reviews}} people review this book <br>
             <b>Synopsis:</b><br>
             {{$book->synopsis}}
         </p>

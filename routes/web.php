@@ -24,6 +24,7 @@ Route::group(['middleware' => 'visitor'], function() {
     Route::get('/login', 'UserController@login')->name('login');
     Route::post('/login', 'UserController@postLogin')->name('postLogin');
     Route::get('/search', 'FrontController@simpleSearch')->name('simpleSearch');
+    Route::get('/advanced-search', 'FrontController@advancedSearch')->name('advancedSearch');
 
     Route::get('/register', 'RegisterController@index')->name('register');
     Route::post('/register/store', 'RegisterController@store')->name('postRegister');
