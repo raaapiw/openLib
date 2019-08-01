@@ -1,4 +1,4 @@
-@extends('layouts.app3')
+@extends('layouts.app2')
 
 @section('style')
 
@@ -9,7 +9,7 @@
 <div class="row ">
     <div class="col-md-12">
         <center>
-            <form action="{{ route('simpleSearch') }}">
+            <form action="{{ route('mahasiswa.simpleSearch') }}">
                 <div class="col-md-10">
                     <input type="text" name="keyword" class="form-control" placeholder="Search what you're going to review . . ."/>
                 </div>
@@ -32,7 +32,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('advancedSearch') }}" method="GET" id="myForm">
+                <form action="{{ route('mahasiswa.advancedSearch') }}" method="GET" id="myForm">
                     <div class="form-group">
                         <label class="control-label">Types:</label>
                         <select class="form-control custom-select" name="type">

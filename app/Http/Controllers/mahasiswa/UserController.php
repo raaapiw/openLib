@@ -13,6 +13,72 @@ use App\Review;
 class UserController extends Controller
 {
     //
+    public function simpleSearch(Request $request){
+        $catbooks = Book::where('votes','>=', 10);
+        $books = $catbooks->when($request->keyword, function ($query) use ($request) {
+            $query->where('nama_buku', 'like', "%{$request->keyword}%")
+                ->orWhere('pengarang', 'like', "%{$request->keyword}%")
+                ->orWhere('penerbit', 'like', "%{$request->keyword}%")
+                ->orWhere('jenis', 'like', "%{$request->keyword}%")
+                ->orWhere('penyunting', 'like', "%{$request->keyword}%")
+                // ->orWhere('tahun_terbit', 'like', "%{$request->keyword}%")
+                ->orWhere('kota_penerbit', 'like', "%{$request->keyword}%");
+        })->paginate();
+
+        return view('pages.mahasiswa.search', compact('books'));
+
+    }
+
+
+    public function advancedSearch(Request $request, Book $book){
+        $books = Book::where('votes','>=', 10);
+        // dd($catbooks);
+        // $books = $catbooks->newQuery();
+
+        // Search for a user based on their name.
+        if ($request->nama_buku) {
+            $books = $books->where('nama_buku', 'LIKE', "%" . $request->nama_buku . "%");
+
+            // $books->where('nama_buku',$request->nama_buku);
+            // dd($books);
+        }
+
+        // Search for a user based on their company.
+        // dd($request->pengarang);
+        if ($request->pengarang) {
+            $books = $books->where('pengarang', 'LIKE', "%" . $request->pengarang . "%");
+            // $books->where('pengarang', $request->input('pengarang'));
+        }
+
+        if ($request->penerbit) {
+            $books = $books->where('penerbit', 'LIKE', "%" . $request->penerbit . "%");
+            // $books->where('penerbit', $request->input('penerbit'));
+        }
+
+        if ($request->type) {
+            $books = $books->where('type', 'LIKE', "%" . $request->type . "%");
+            // $books->where('type', $request->input('type'));
+        }
+
+        if ($request->code) {
+            $books = $books->where('code', 'LIKE', "%" . $request->code . "%");
+            // $books->where('code', $request->input('code'));
+        }
+
+        if ($request->editor) {
+            $books = $books->where('pennyunting', 'LIKE', "%" . $request->editor . "%");
+            // $books->where('penyunting', $request->input('editor'));
+        }
+        // Continue for all of the filters.
+
+        // Get the results and return them.
+        $books = $books->paginate();
+        // dd($books);
+        return view('pages.mahasiswa.search', compact('books'));
+
+    }
+
+
     public function dashboard(){
 
         $realesed = Book::where('votes','>=',10);

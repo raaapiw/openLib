@@ -72,5 +72,8 @@ Route::group(['middleware' => 'mahasiswa'], function() {
     Route::get('/mahasiswa/leaderboard/index', 'mahasiswa\UserController@leaderboard') ->name('mahasiswa.leaderboard.index');
     Route::get('/mahasiswa/profile{id}', 'mahasiswa\UserController@profile') ->name('mahasiswa.profile');
 
+    Route::get('/search', 'mahasiswa\UserController@simpleSearch')->name('mahasiswa.simpleSearch');
+    Route::get('/advance-search', 'mahasiswa\UserController@advancedSearch')->name('mahasiswa.advancedSearch');
+
 });
 
