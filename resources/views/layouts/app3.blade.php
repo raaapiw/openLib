@@ -38,6 +38,9 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <style>
+    .modal-backdrop {
+  z-index: -1;
+}
     .a{
         background-color: #58585C;
         color: white;
@@ -147,8 +150,8 @@
                                 <input type="password" name="password" required placeholder="Password">&nbsp;
                                 <button type="submit" class="btn waves-effect waves-light btn-xs btn-info">Log In</button>&nbsp;
                                 {{-- <button type="submit" class="btn waves-effect waves-light btn-xs btn-info" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sign Up</button>&nbsp; --}}
-                                {{-- <a class="btn btn-xs btn-info" href="#" data-toggle="modal" data-target="#modal1" data-whatever="@signup">Sign Up</a> --}}
-                                <a class="btn btn-xs btn-info" href="{{'register'}}" >Sign Up</a>
+                                <a class="btn btn-xs btn-info" href="#" data-toggle="modal" data-target="#modal1" data-whatever="@signup">Sign Up</a>
+                                {{-- <a class="btn btn-xs btn-info" href="{{'register'}}" >Sign Up</a> --}}
                                 {{-- <button class="btn waves-effect waves-light btn-xs btn-info" onclick="window.location.href='{{route('register')}}'">Sign Up</button> --}}
                             {{-- <a href="{{route('login')}}"><span class="label label-custom">Login</span></a>&nbsp;&nbsp; --}}
                             </form>
@@ -160,7 +163,7 @@
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ route('postRegister') }}" method="post" id="myForm">
+                                                <form action="{{ route('postRegister') }}" method="POST" id="myForm">
                                                     <div class="form-group">
                                                         <label for="code" class="control-label">Name:</label>
                                                         <input type="text" name="name" class="form-control" id="code">
