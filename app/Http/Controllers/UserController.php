@@ -19,7 +19,7 @@ class UserController extends Controller
     }
 
     public function login(){
-        return view('home');
+        return redirect()->route('home');
     }
 
     public function postLogin(Request $request){
