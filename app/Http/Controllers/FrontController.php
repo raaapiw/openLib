@@ -36,40 +36,50 @@ class FrontController extends Controller
     }
 
     public function advancedSearch(Request $request, Book $book){
-        $catbooks = Book::where('votes','>=', 10);
-        $book = $catbooks->newQuery();
+        $books = Book::where('votes','>=', 10);
+        // dd($catbooks);
+        // $books = $catbooks->newQuery();
 
         // Search for a user based on their name.
-        if ($request->has('nama_buku')) {
-            $book->where('nama_buku', $request->input('nama_buku'));
+        if ($request->nama_buku) {
+            $books = $books->where('nama_buku', 'LIKE', "%" . $request->nama_buku . "%");
+
+            // $books->where('nama_buku',$request->nama_buku);
+            // dd($books);
         }
 
         // Search for a user based on their company.
-        if ($request->has('pengarang')) {
-            $book->where('pengarang', $request->input('pengarang'));
+        // dd($request->pengarang);
+        if ($request->pengarang) {
+            $books = $books->where('pengarang', 'LIKE', "%" . $request->pengarang . "%");
+            // $books->where('pengarang', $request->input('pengarang'));
         }
 
-        // Search for a user based on their city.
-        if ($request->has('penerbit')) {
-            $book->where('penerbit', $request->input('penerbit'));
+        if ($request->penerbit) {
+            $books = $books->where('penerbit', 'LIKE', "%" . $request->penerbit . "%");
+            // $books->where('penerbit', $request->input('penerbit'));
         }
 
-        if ($request->has('type')) {
-            $book->where('type', $request->input('type'));
+        if ($request->type) {
+            $books = $books->where('type', 'LIKE', "%" . $request->type . "%");
+            // $books->where('type', $request->input('type'));
         }
 
-        if ($request->has('code')) {
-            $book->where('code', $request->input('code'));
+        if ($request->code) {
+            $books = $books->where('code', 'LIKE', "%" . $request->code . "%");
+            // $books->where('code', $request->input('code'));
         }
 
-        if ($request->has('editor')) {
-            $book->where('penyunting', $request->input('editor'));
+        if ($request->editor) {
+            $books = $books->where('pennyunting', 'LIKE', "%" . $request->editor . "%");
+            // $books->where('penyunting', $request->input('editor'));
         }
         // Continue for all of the filters.
 
         // Get the results and return them.
-        $book->get();
-        return view('pages.search', compact('book'));
+        $books = $books->paginate();
+        // dd($books);
+        return view('pages.search', compact('books'));
 
     }
 
