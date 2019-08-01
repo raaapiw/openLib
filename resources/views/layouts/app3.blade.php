@@ -14,6 +14,8 @@
     <title>Open Library</title>
     <!-- Bootstrap Core CSS -->
     @yield('style')
+
+    <link href= "{{asset('material/plugins/Magnific-Popup-master/dist/magnific-popup.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- chartist CSS -->
@@ -144,10 +146,50 @@
                                 <input type="text" name="username" required placeholder="Username">&nbsp;
                                 <input type="password" name="password" required placeholder="Password">&nbsp;
                                 <button type="submit" class="btn waves-effect waves-light btn-xs btn-info">Log In</button>&nbsp;
-                                <a class="btn btn-xs btn-info" href="{{route('register')}}">Sign Up</a>
+                                {{-- <button type="submit" class="btn waves-effect waves-light btn-xs btn-info" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sign Up</button>&nbsp; --}}
+                                {{-- <a class="btn btn-xs btn-info" href="#" data-toggle="modal" data-target="#modal1" data-whatever="@signup">Sign Up</a> --}}
+                                <a class="btn btn-xs btn-info" href="{{'register'}}" >Sign Up</a>
                                 {{-- <button class="btn waves-effect waves-light btn-xs btn-info" onclick="window.location.href='{{route('register')}}'">Sign Up</button> --}}
                             {{-- <a href="{{route('login')}}"><span class="label label-custom">Login</span></a>&nbsp;&nbsp; --}}
                             </form>
+                            <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="e">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="e">Sign Up</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('postRegister') }}" method="post" id="myForm">
+                                                    <div class="form-group">
+                                                        <label for="code" class="control-label">Name:</label>
+                                                        <input type="text" name="name" class="form-control" id="code">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="title" class="control-label">Email:</label>
+                                                        <input type="text" name="email" class="form-control" id="title">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="author" class="control-label">Faculty:</label>
+                                                        <input type="text" name="faculty" class="form-control" id="author">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="publisher" class="control-label">Username:</label>
+                                                        <input type="text" name="username" class="form-control" id="publisher">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="editor" class="control-label">Password:</label>
+                                                        <input type="password" name="password" class="form-control" id="editor">
+                                                    </div>
+                                                    <div class="form-action">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary" onclick="myFunction()" type="submit">Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             {{-- <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
@@ -326,6 +368,13 @@
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
+    <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
+    <script>
+        function myFunction() {
+            document.getElementById("myForm").submit();
+        }
+    </script>
     <script src="{{ asset('material/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{ asset('material/plugins/popper/popper.min.js') }}"></script>
