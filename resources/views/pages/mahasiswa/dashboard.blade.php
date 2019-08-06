@@ -140,7 +140,7 @@
                 <div class="card-body little-profile text-center">
                     <div class="pro-img"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" /></div>
                     <h3 class="m-b-0">{{$user->name}}</h3>
-                    <p>{{$row->faculty}} - {{$row->id}}</p>
+                    <p>{{$user->faculty}} - {{$user->id}}</p>
                     <p>{{$user->points}} points, {{$user->reviews}} Review</p>
                 </div>
             </div>
