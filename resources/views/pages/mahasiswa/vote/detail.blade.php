@@ -50,10 +50,12 @@
             <span class="fa fa-star"></span>
             &nbsp;&nbsp;<img src="{{asset('material/images/review.png')}}" alt=""> <br>
             <b>Synopsis:</b><br>
-            {{$book->synopsis}}
         </p>
+        <div class="card" style="background-color:#E2DCC4">
+            <p align="justify" style="color:black;">{{$book->synopsis}}</p>
+        </div>
     </div>
-    <div class="col-lg-3 col-md-5">
+    <div class="col-lg-3 ">
         <div class="card">
             <center>
             <div class="card-body">

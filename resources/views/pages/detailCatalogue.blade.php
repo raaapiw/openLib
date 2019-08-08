@@ -37,7 +37,11 @@
                 <form action="" method="POST" enctype="multipart/form-data">
                     @foreach($reviews as $key=>$row)
                         <div class="d-flex flex-row comment-row">
-                            <div class="p-2"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" width="50"></div>
+                            @if($row->user->gender == 'M')
+                            <div class="p-2"><img src="{{ asset('material/images/users/male.png')}}" alt="user" width="50"></div>
+                            @else
+                            <div class="pro-img"><img src="{{ asset('material/images/users/female.png')}}" alt="user" /></div>
+                            @endif
                             <div class="comment-text w-100">
                                 <p style="color: black;"><b>{{$row->user->name}}</b> for <b><u>{{$row->book->nama_buku}}</u></b></p>
                                 <p style="color: black;">"{{$row->keterangan}}"</p>

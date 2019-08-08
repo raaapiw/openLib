@@ -20,7 +20,7 @@
                 <!-- ============================================================== -->
                 <img class="card-img-top" src="{{ asset('material/images/background/profile-bg.jpg')}}" alt="Card image cap">
                 <div class="card-body little-profile text-center">
-                    <div class="pro-img"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" /></div>
+                    <div class="pro-img"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" /></div>
                     <h3 class="m-b-0">{{$user->name}}</h3>
                     <p>{{$user->faculty}} - {{$user->id}}</p>
                     <p>{{$user->points}} points, {{$user->reviews}} Review</p>

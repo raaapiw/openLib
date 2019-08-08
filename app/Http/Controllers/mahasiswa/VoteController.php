@@ -22,7 +22,8 @@ class VoteController extends Controller
     {
         //
         $books = Book::where('votes','<',10)->get();
-        $book = Book::orderBy('votes','DESC')->take(1)->first();
+        $winwin = Book::where('votes','=',10);
+        $book = $winwin->orderBy('updated_at','DESC')->take(1)->first();
         // dd($book);
         return view('pages.mahasiswa.vote.index', compact('books', 'book'));
     }

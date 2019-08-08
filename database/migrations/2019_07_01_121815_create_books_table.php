@@ -27,8 +27,8 @@ class CreateBooksTable extends Migration
             $table->integer('votes')->nullable();
             $table->integer('reviews')->nullable();
             $table->string('cover')->nullable();
-            $table->string('synopsis')->nullable();
-            $table->integer('code')->nullable();
+            $table->LONGTEXT('synopsis')->nullable();
+            $table->string('code')->nullable();
             $table->integer('type')->nullable();
             $table->timestamps();
 
