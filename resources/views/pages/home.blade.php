@@ -107,46 +107,6 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Recent Review</h4> </div>
-            <!-- ============================================================== -->
-            <!-- Comment widgets -->
-            <!-- ============================================================== -->
-            <div class="comment-widgets">
-                <!-- Comment Row -->
-                @foreach($reviews as $key=>$row)
-                    <div class="d-flex flex-row comment-row">
-                        <div class="p-2"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" width="50"></div>
-                        <div class="comment-text w-100">
-                            <p style="color: black;"><b>{{$row->user->name}}</b> for <b><u>{{$row->book->nama_buku}}</u></b></p>
-                            <p style="color: black;">"{{$row->keterangan}}"</p>
-                            <p class="m-b-5">{{$row->review}}</p>
-                        </div>
-                    </div>
-                @endforeach
-                <!-- Comment Row -->
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Member of The Week</h4>
-                <!-- ============================================================== -->
-                <!-- To do list widgets -->
-                <!-- ============================================================== -->
-                <img class="card-img-top" src="{{ asset('material/images/background/profile-bg.jpg')}}" alt="Card image cap">
-                <div class="card-body little-profile text-center">
-                    <div class="pro-img"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" /></div>
-                    <h3 class="m-b-0">{{$user->name}}</h3>
-                    <p>{{$user->faculty}} - {{$user->id}}</p>
-                    <p>{{$user->points}} points, {{$user->reviews}} Review</p>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="col-lg-3 col-md-5">
         <div class="card">
             <center>
@@ -167,8 +127,6 @@
             </center>
         </div>
     </div>
-</div>
-{{-- <div class="row" style="margin-top:-650px; margin-bottom:200px">
     <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
@@ -180,7 +138,11 @@
                 <!-- Comment Row -->
                 @foreach($reviews as $key=>$row)
                     <div class="d-flex flex-row comment-row">
-                        <div class="p-2"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" width="50"></div>
+                        @if($row->user->gender == 'M')
+                        <div class="p-2"><img src="{{ asset('material/images/users/male.png')}}" alt="user" width="50"></div>
+                        @else
+                        <div class="pro-img"><img src="{{ asset('material/images/users/female.png')}}" alt="user" /></div>
+                        @endif
                         <div class="comment-text w-100">
                             <p style="color: black;"><b>{{$row->user->name}}</b> for <b><u>{{$row->book->nama_buku}}</u></b></p>
                             <p style="color: black;">"{{$row->keterangan}}"</p>
@@ -201,15 +163,19 @@
                 <!-- ============================================================== -->
                 <img class="card-img-top" src="{{ asset('material/images/background/profile-bg.jpg')}}" alt="Card image cap">
                 <div class="card-body little-profile text-center">
-                    <div class="pro-img"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" /></div>
+                    @if($user->gender == 'M')
+                    <div class="p-2"><img src="{{ asset('material/images/users/male.png')}}" alt="user" width="50"></div>
+                    @else
+                    <div class="pro-img"><img src="{{ asset('material/images/users/female.png')}}" alt="user" /></div>
+                    @endif
                     <h3 class="m-b-0">{{$user->name}}</h3>
-                    <p>FRI - 1201150444</p>
-                    <p>{{$user->reviews}} points, {{$user->reviews}} Review</p>
+                    <p>{{$user->faculty}} - {{$user->id}}</p>
+                    <p>{{$user->points}} points, {{$user->reviews}} Review</p>
                 </div>
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 @endsection
 
 @section('script')

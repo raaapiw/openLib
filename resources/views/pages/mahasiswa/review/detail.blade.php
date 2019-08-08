@@ -63,7 +63,11 @@
                 <form action="{{ route('mahasiswa.review.store')}}" method="POST" enctype="multipart/form-data">
                     @foreach($reviews as $key=>$row)
                         <div class="d-flex flex-row comment-row">
-                            <div class="p-2"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" width="50"></div>
+                            @if($row->user->gender == 'M')
+                            <div class="p-2"><img src="{{ asset('material/images/users/male.png')}}" alt="user" width="50"></div>
+                            @else
+                            <div class="pro-img"><img src="{{ asset('material/images/users/female.png')}}" alt="user" /></div>
+                            @endif
                             <div class="comment-text w-100">
                                 <p style="color: black;"><b>{{$row->user->name}}</b> for <b><u>{{$row->book->nama_buku}}</u></b></p>
                                 <p style="color: black;">"{{$row->keterangan}}"</p>
@@ -74,7 +78,7 @@
                     @endforeach
                     <div class="d-flex flex-row comment-row">
                         <input type="hidden" name="book_id" value="{{$book->id}}">
-                        <div class="p-2"><img src="{{ asset('material/images/users/profile.png')}}" alt="user" width="50"></div>
+                        <div class="p-2"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" width="50"></div>
                         <div class="comment-text w-100">
                             <p style="color: black;"><b>{{ Sentinel::getUser()->name }}</b></p>
                             <input type="text" name="subject" id="firstName" class="form-control" placeholder="Subject"><br><br>

@@ -63,16 +63,11 @@ class User extends \Cartalyst\Sentinel\Users\EloquentUser
             else
                 $image = 'material/images/users/p4.png';
         }
-        else if($this->roles()->first()->slug == 'bapenda' || $this->roles()->first()->slug == 'midwife' ){
+        else if($this->roles()->first()->slug == 'mahasiswa' ){
             if($this->gender == 'M')
-                $image = 'material/images/users/lingga.png';
+                $image = 'material/images/users/male.png';
             else
-                $image = 'material/images/users/lingga.png';
-        } else {
-            if($this->gender == 'M')
-                $image = 'material/images/users/p5.png';
-            else
-                $image = 'material/images/users/p6.png';
+                $image = 'material/images/users/female.png';
         }
 		return $image;
     }
