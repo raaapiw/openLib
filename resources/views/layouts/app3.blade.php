@@ -169,12 +169,32 @@
                                                         <input type="text" name="name" class="form-control" id="code">
                                                     </div>
                                                     <div class="form-group">
+                                                        <label for="title" class="control-label">Gender:</label>
+                                                        <label class="custom-control custom-radio">
+                                                            <input id="radio5" name="gender" type="radio" value="M" class="custom-control-input">
+                                                            <span class="custom-control-label">Male</span>
+                                                        </label>
+                                                        <label class="custom-control custom-radio">
+                                                            <input id="radio6" name="gender" type="radio" value="F" class="custom-control-input">
+                                                            <span class="custom-control-label">Female</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="title" class="control-label">Email:</label>
                                                         <input type="text" name="email" class="form-control" id="title">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="author" class="control-label">Faculty:</label>
-                                                        <input type="text" name="faculty" class="form-control" id="author">
+                                                        <select class="form-control custom-select" name="faculty">
+                                                            <option disabled value="">Choose the type of item</option>
+                                                            <option value="FIT">FIT</option>
+                                                            <option value="FKB">FKB</option>
+                                                            <option value="FEB">FIB</option>
+                                                            <option value="FIK">FIK</option>
+                                                            <option value="FIF">FIF</option>
+                                                            <option value="FRI">FRI</option>
+                                                            <option value="FTE">FTE</option>
+                                                        </select>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="publisher" class="control-label">Username:</label>

@@ -68,16 +68,16 @@ class BookController extends Controller
         // dd($data);
         $book = Book::create($data);
         // dd($report);
-        $user = User::where('id','=',Sentinel::getUser()->id)->first();
-        // dd($book);
-        $reviews = $user->reviews + 5;
-        // dd($vote);
-        $data_user = [
-            'reviews' => $reviews,
-        ];
+        // $user = User::where('id','=',Sentinel::getUser()->id)->first();
+        // // dd($book);
+        // $reviews = $user->reviews + 5;
+        // // dd($vote);
+        // $data_user = [
+        //     'reviews' => $reviews,
+        // ];
 
         // dd($data_book);
-        $user->fill($data_user)->save();
+        // $user->fill($data_user)->save();
         return redirect()->route('mahasiswa.dashboard');
     }
 

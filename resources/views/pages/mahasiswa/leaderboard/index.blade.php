@@ -36,7 +36,7 @@
                                 <td><font color="black">{{$row->name}}</font></td>
                                 <td id="detailInfo" ></td>
                                 <td><font color="black">{{$row->faculty}}</font></td>
-                                <td><font color="black">{{$row->reviews}}</font></td>
+                                <td><font color="black">{{$row->points}}</font></td>
                             </tr>
                             @endforeach
                         </tbody>

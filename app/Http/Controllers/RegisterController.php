@@ -45,6 +45,8 @@ class RegisterController extends Controller
             'password'  => $request->password,
             'faculty'  => $request->faculty,
             'reviews'  => 0,
+            'points'  => 0,
+            'gender' => $request->gender
         ];
         // dd($data);
         $user = Sentinel::registerAndActivate($data);
