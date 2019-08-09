@@ -163,7 +163,7 @@
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ route('postRegister') }}" method="POST" id="myForm">
+                                                <form action="{{ route('postRegister') }}" method="POST" id="myForm1">
                                                     <div class="form-group">
                                                         <label for="code" class="control-label">Name:</label>
                                                         <input type="text" name="name" class="form-control" id="code">
@@ -395,7 +395,7 @@
     <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
     <script>
         function myFunction() {
-            document.getElementById("myForm").submit();
+            document.getElementById("myForm1").submit();
         }
     </script>
     <script src="{{ asset('material/plugins/jquery/jquery.min.js') }}"></script>
