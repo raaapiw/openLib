@@ -33,9 +33,10 @@ class ReviewController extends Controller
         //
         $reviews = Review::where('book_id','=', $id)->get();
         $book = Book::find($id);
+        $rating = $book->rating/$book->reviews;
         $books = Book::orderBy('votes','DESC')->take(3)->get();
 
-        return view('pages.mahasiswa.review.detail', compact('book', 'reviews', 'books'));
+        return view('pages.mahasiswa.review.detail', compact('book', 'reviews', 'books','rating'));
     }
 
     /**
@@ -59,11 +60,19 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         //
+        // $data = $request->all();
+        // if($request->ajax()){
+        //     $ratingValue = $request->ratingValue;
+        //     return response()->json($ratingValue);
+        // }
+        // $ratingValue = $request->input('ratingValue');
+        // dd($data);
         $data = [
             'user_id' => Sentinel::getUser()->id,
             'book_id' => $request->book_id,
+            'subject' =>$request->subject,
             'review'=> $request->review,
-            'keterangan'=> $request->subject
+
         ];
         // dd($data);
         $review = Review::create($data);
@@ -84,9 +93,11 @@ class ReviewController extends Controller
         $book = Book::where('id','=',$request->book_id)->first();
         // dd($book);
         $reviews = $book->reviews + 1;
+        $rating = $book->rating + $request->ratingValue;
         // dd($vote);
         $data_book = [
             'reviews' => $reviews,
+            'rating'=> $rating
         ];
 
         // dd($data_book);

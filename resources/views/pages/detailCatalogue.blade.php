@@ -62,10 +62,3 @@
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
 @endsection
-{{-- <div class="card">
-    <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-    <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <a href="#" class="btn btn-warning">Review</a>
-    </div>
-</div> --}}

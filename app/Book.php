@@ -25,7 +25,8 @@ class Book extends Model
         'reviews',
         'points',
         'type',
-        'code'
+        'code',
+        'rating'
     ];
 
     public function user(){
