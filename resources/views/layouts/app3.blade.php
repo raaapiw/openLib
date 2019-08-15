@@ -206,7 +206,7 @@
                                                     </div>
                                                     <div class="form-action">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary" onclick="myFunction()" type="submit">Submit</button>
+                                                        <button type="button" class="btn btn-primary" onclick="myFunction1()" type="submit">Submit</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -394,7 +394,7 @@
     <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
     <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
     <script>
-        function myFunction() {
+        function myFunction1() {
             document.getElementById("myForm1").submit();
         }
     </script>
