@@ -163,7 +163,7 @@
             <div class="col-sm-8">
                 @foreach($books as $key=>$row)
                 <a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
-                <p align="center" style="color:black;"><b>{{$row->nama_buku}}</b><br><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></p>
+                <p align="center" style="color:black;"><b>{{$row->nama_buku}}</b><br><a href="{{ route('mahasiswa.vote.index')}}" class="btn btn-success">Vote</a></p>
                 <br>
                 @endforeach
                 <br>
