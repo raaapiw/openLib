@@ -106,6 +106,26 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-3 col-md-5">
+        <div class="card">
+            <center>
+            <div class="card-body">
+                <h3 class="card-title">Winner of the last event</h3>
+            </div>
+            <div class="col-sm-8">
+                @if(@isset($book->cover))
+                    <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" width="120px" height="180px" alt=""></a>
+                    <p align="center" style="color:black;"><b>{{$book->nama_buku}}</b></p>
+                    <br>
+                    <br>
+                @else
+                @endif
+            </div>
+            </center>
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="col-lg-6">
         <div class="card">
             <div class="card-body">

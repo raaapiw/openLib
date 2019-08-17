@@ -111,22 +111,22 @@
         <div class="card">
             <center>
             <div class="card-body">
-                <h3 class="card-title">Top Vote</h3>
+                <h3 class="card-title">Winner of the last event</h3>
             </div>
             <div class="col-sm-8">
-                @foreach($books as $key=>$row)
-                <a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
-                <p align="center" style="color:black;"><b>{{$row->nama_buku}}</b><br>
-                </p>
-                <a href="#" onclick="sweet()" class="btn btn-success">Vote</a>
-                <br>
-                <br>
-                @endforeach
-                <br>
+                @if(@isset($book->cover))
+                    <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" width="120px" height="180px" alt=""></a>
+                    <p align="center" style="color:black;"><b>{{$book->nama_buku}}</b></p>
+                    <br>
+                    <br>
+                @else
+                @endif
             </div>
             </center>
         </div>
     </div>
+</div>
+<div class="row">
     <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
@@ -173,6 +173,26 @@
                     <p>{{$user->points}} points, {{$user->reviews}} Review</p>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-5">
+        <div class="card">
+            <center>
+            <div class="card-body">
+                <h3 class="card-title">Top Vote</h3>
+            </div>
+            <div class="col-sm-8">
+                @foreach($books as $key=>$row)
+                <a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
+                <p align="center" style="color:black;"><b>{{$row->nama_buku}}</b><br>
+                </p>
+                <a href="#" onclick="sweet()" class="btn btn-success">Vote</a>
+                <br>
+                <br>
+                @endforeach
+                <br>
+            </div>
+            </center>
         </div>
     </div>
 </div>

@@ -53,6 +53,7 @@ class ReviewController extends Controller
     {
         //
         $catalogue = Cataloguebooks::find($id);
+
         return view('pages.mahasiswa.review.form', compact('catalogue'));
     }
 
@@ -75,7 +76,7 @@ class ReviewController extends Controller
         $data = [
             'user_id' => Sentinel::getUser()->id,
             'book_id' => $request->book_id,
-            'subject' =>$request->subject,
+            'keterangan' =>$request->subject,
             'review'=> $request->review,
 
         ];

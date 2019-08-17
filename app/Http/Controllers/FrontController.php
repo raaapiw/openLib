@@ -116,9 +116,15 @@ class FrontController extends Controller
         //
         $reviews = Review::where('book_id','=', $id)->get();
         $book = Book::find($id);
+        if ($book->reviews == 0){
+            $rating = 0;
+        }
+        else{
+            $rating = $book->rating/$book->reviews;
+        }
         $books = Book::orderBy('votes','DESC')->take(3)->get();
 
-        return view('pages.detailCatalogue', compact('book', 'reviews', 'books'));
+        return view('pages.detailCatalogue', compact('book', 'reviews', 'books','rating'));
     }
 
     public function index()

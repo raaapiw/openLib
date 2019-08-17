@@ -46,7 +46,13 @@
         <h1>{{$book->nama_buku}}</h1>
         <p align="justify" style="color:black;">
             <img src="{{asset('material/images/author.png')}}" alt=""> {{$book->pengarang}}&nbsp;&nbsp;<img src="{{asset('material/images/publisher.png')}}" alt="">&nbsp;&nbsp;{{$book->penerbit}} <br>
-            @if($rating >= 1 && $rating<2)
+            @if($rating >= 0 && $rating<1)
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            @elseif($rating >= 1 && $rating<2)
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star"></span>
             <span class="fa fa-star"></span>

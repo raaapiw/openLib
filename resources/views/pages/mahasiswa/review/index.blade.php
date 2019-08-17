@@ -1,7 +1,11 @@
 @extends('layouts.app2')
 
 @section('style')
-
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
 <link href= "{{asset('material/plugins/Magnific-Popup-master/dist/magnific-popup.css')}}" rel="stylesheet">
 @endsection
 
@@ -45,7 +49,50 @@
                     <td>
                         <p align="justify" style="color:black;">
                             <b>{{$row->nama_buku}}</b><br>
-                            "bintang"<br>
+                            @if ($row->reviews == 0)
+                                {{$rating = 0}}
+
+                            @else
+                                {{$rating = $row->rating/$row->reviews}}
+
+                            @endif
+                            @if($rating >= 0 && $rating<1)
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            @elseif($rating >= 1 && $rating<2)
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            @elseif($rating >= 2 && $rating<3)
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            @elseif($rating >= 3 && $rating<4)
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            @elseif($rating >= 4 && $rating<5)
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            @else
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            @endif<br>
                             <img src="{{asset('material/images/author.png')}}" alt="">{{$row->pengarang}}<br>
                             <img src="{{asset('material/images/review.png')}}" alt="">&nbsp;&nbsp;{{$row->reviews}}&nbsp; people reviewing this<br>
                             <a href="{{ route('mahasiswa.review.detail', $row->id)}}" class="btn btn-warning">Review</a>
