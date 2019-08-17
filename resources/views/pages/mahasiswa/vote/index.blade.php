@@ -48,11 +48,6 @@
                                                     <div class="col-md-9 col-xs-12">
                                                         <p align="justify" style="color:black;">
                                                             <b>{{$row->nama_buku}}</b><br>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star"></span>
-                                                            <span class="fa fa-star"></span><br>
                                                             <img src="{{asset('material/images/author.png')}}" alt="">&nbsp;&nbsp;{{$row->pengarang}}<br>
                                                         </p>
                                                     </div>
@@ -62,13 +57,26 @@
                                     </td>
                                     <td><center>{{$row->votes}}</center></td>
                                     <td>
-                                        {{-- {{$id = Sentinel::getUser()->id}} --}}
-                                        {{-- @if($row->votes->user_id == $id) --}}
-                                        <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
-                                        {{-- @else --}}
-                                        {{-- <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-danger">Voted</a></center> --}}
+                                        {{-- @if($row->votes == 0) --}}
+                                            <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
 
-                                        {{-- @endif --}}
+                                            {{-- @if() --}}
+                                        {{-- @elseif($row->votes !== 0 && $row->votess == null)
+                                        <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
+
+                                        @else
+                                            @if()
+                                            @foreach($row->votess as $votesss)
+                                                @if($votesss->book_id == $row->id && $votesss->user_id == Sentinel::getUser()->id)
+                                                <center><a href="#" class="btn btn-danger">Voted</a></center>
+                                                @elseif($votesss == null)
+                                                <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
+                                                @else
+
+                                                @endif
+                                                <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
+                                            @endforeach
+                                        @endif --}}
                                     </td>
                                 </tr>
                             @endforeach

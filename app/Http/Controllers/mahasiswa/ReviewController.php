@@ -33,7 +33,12 @@ class ReviewController extends Controller
         //
         $reviews = Review::where('book_id','=', $id)->get();
         $book = Book::find($id);
-        $rating = $book->rating/$book->reviews;
+        if ($book->reviews == 0){
+            $rating = 0;
+        }
+        else{
+            $rating = $book->rating/$book->reviews;
+        }
         $books = Book::orderBy('votes','DESC')->take(3)->get();
 
         return view('pages.mahasiswa.review.detail', compact('book', 'reviews', 'books','rating'));
