@@ -90,7 +90,9 @@ class FrontController extends Controller
         $books = $book->orderBy('votes','DESC')->take(3)->get();
         $reviews = Review::orderBy('updated_at','DESC')->take(3)->get();
         $user = User::orderBy('points','DESC')->take(1)->first();
-        return view('pages.home', compact('realese', 'books', 'reviews', 'user'));
+        $winwin = Book::where('votes','=',10);
+        $winner = $winwin->orderBy('updated_at','DESC')->take(1)->first();
+        return view('pages.home', compact('realese', 'books', 'reviews', 'user','winner'));
     }
 
     public function catalogue(){
@@ -100,7 +102,9 @@ class FrontController extends Controller
 
     public function vote(){
         $books = Book::where('votes','<',10)->get();
-        $book = Book::orderBy('votes','DESC')->take(1)->first();
+        $winwin = Book::where('votes','=',10);
+        $book = $winwin->orderBy('updated_at','DESC')->take(1)->first();
+        // $book = Book::orderBy('votes','DESC')->take(1)->first();
         return view('pages.vote', compact('books', 'book'));
     }
 

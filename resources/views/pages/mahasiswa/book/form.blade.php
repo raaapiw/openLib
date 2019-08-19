@@ -63,6 +63,7 @@
                     <label>Synopsis :</label><br>
                     <textarea class="form-control" id="tempat" name="synopsis" rows="10"></textarea>
                 </div>
+                {{-- <input type="file"> --}}
                 <div class="form-group">
                     <label>Cover :</label><br>
                     <input  type="file" id="input-file-now-custom-1" class="dropify" id="tempat" name="cover" >

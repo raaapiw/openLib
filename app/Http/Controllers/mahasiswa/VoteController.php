@@ -26,6 +26,7 @@ class VoteController extends Controller
             $query->where('user_id','=', Sentinel::getUser()->id);
         })->get();
 
+        $voted = Vote::where('user_id','=',Sentinel::getUser()->id)->get();
 
         // $buku =
         // $vote = Vote::where('user_id','=', Sentinel::getUser()->id)->get();
@@ -37,7 +38,7 @@ class VoteController extends Controller
         $winwin = Book::where('votes','=',10);
         $book = $winwin->orderBy('updated_at','DESC')->take(1)->first();
         // dd($book);
-        return view('pages.mahasiswa.vote.index', compact('books', 'book'));
+        return view('pages.mahasiswa.vote.index', compact('books', 'book','voted'));
     }
 
     /**

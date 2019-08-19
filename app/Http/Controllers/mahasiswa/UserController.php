@@ -87,7 +87,10 @@ class UserController extends Controller
         $books = $book->orderBy('votes','DESC')->take(3)->get();
         $reviews = Review::orderBy('updated_at','DESC')->take(3)->get();
         $user = User::orderBy('points','DESC')->take(1)->first();
-        return view('pages.mahasiswa.dashboard', compact('realese', 'books','reviews','user'));
+
+        $winwin = Book::where('votes','=',10);
+        $winner = $winwin->orderBy('updated_at','DESC')->take(1)->first();
+        return view('pages.mahasiswa.dashboard', compact('realese', 'books','reviews','user','winner'));
     }
     public function leaderboard(){
 

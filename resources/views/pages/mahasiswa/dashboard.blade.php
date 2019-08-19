@@ -113,9 +113,9 @@
                 <h3 class="card-title">Winner of the last event</h3>
             </div>
             <div class="col-sm-8">
-                @if(@isset($book->cover))
-                    <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" width="120px" height="180px" alt=""></a>
-                    <p align="center" style="color:black;"><b>{{$book->nama_buku}}</b></p>
+                @if(@isset($winner->cover))
+                    <a href=""><img src="{{asset('storage/files/cover/'.$winner->cover)}}" width="120px" height="180px" alt=""></a>
+                    <p align="center" style="color:black;"><b>{{$winner->nama_buku}}</b></p>
                     <br>
                     <br>
                 @else
