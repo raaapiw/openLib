@@ -111,22 +111,22 @@
         <div class="card">
             <center>
             <div class="card-body">
-                <h3 class="card-title">Top Vote</h3>
+                <h3 class="card-title">Winner of the last event</h3>
             </div>
             <div class="col-sm-8">
-                @foreach($books as $key=>$row)
-                <a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
-                <p align="center" style="color:black;"><b>{{$row->nama_buku}}</b><br>
-                </p>
-                <a href="#" onclick="sweet()" class="btn btn-success">Vote</a>
-                <br>
-                <br>
-                @endforeach
-                <br>
+                @if(@isset($winner->cover))
+                    <a href=""><img src="{{asset('storage/files/cover/'.$winner->cover)}}" width="120px" height="180px" alt=""></a>
+                    <p align="center" style="color:black;"><b>{{$winner->nama_buku}}</b></p>
+                    <br>
+                    <br>
+                @else
+                @endif
             </div>
             </center>
         </div>
     </div>
+</div>
+<div class="row">
     <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
@@ -141,7 +141,7 @@
                         @if($row->user->gender == 'M')
                         <div class="p-2"><img src="{{ asset('material/images/users/male.png')}}" alt="user" width="50"></div>
                         @else
-                        <div class="pro-img"><img src="{{ asset('material/images/users/female.png')}}" alt="user" /></div>
+                        <div class="pro-img"><img src="{{ asset('material/images/users/female.png')}}" alt="user" width="50"/></div>
                         @endif
                         <div class="comment-text w-100">
                             <p style="color: black;"><b>{{$row->user->name}}</b> for <b><u>{{$row->book->nama_buku}}</u></b></p>
@@ -169,10 +169,30 @@
                     <div class="pro-img"><img src="{{ asset('material/images/users/female.png')}}" alt="user" /></div>
                     @endif
                     <h3 class="m-b-0">{{$user->name}}</h3>
-                    <p>{{$user->faculty}} - {{$user->id}}</p>
+                    <p><center>{{$user->faculty}}</center></p>
                     <p>{{$user->points}} points, {{$user->reviews}} Review</p>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-5">
+        <div class="card">
+            <center>
+            <div class="card-body">
+                <h3 class="card-title">Top Vote</h3>
+            </div>
+            <div class="col-sm-8">
+                @foreach($books as $key=>$row)
+                <a href=""><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></a>
+                <p align="center" style="color:black;"><b>{{$row->nama_buku}}</b><br>
+                </p>
+                <a href="#" onclick="sweet()" class="btn btn-success">Vote</a>
+                <br>
+                <br>
+                @endforeach
+                <br>
+            </div>
+            </center>
         </div>
     </div>
 </div>

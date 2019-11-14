@@ -30,6 +30,7 @@ class CreateBooksTable extends Migration
             $table->LONGTEXT('synopsis')->nullable();
             $table->string('code')->nullable();
             $table->integer('type')->nullable();
+            $table->integer('rating')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

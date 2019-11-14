@@ -90,7 +90,9 @@ class FrontController extends Controller
         $books = $book->orderBy('votes','DESC')->take(3)->get();
         $reviews = Review::orderBy('updated_at','DESC')->take(3)->get();
         $user = User::orderBy('points','DESC')->take(1)->first();
-        return view('pages.home', compact('realese', 'books', 'reviews', 'user'));
+        $winwin = Book::where('votes','=',10);
+        $winner = $winwin->orderBy('updated_at','DESC')->take(1)->first();
+        return view('pages.home', compact('realese', 'books', 'reviews', 'user','winner'));
     }
 
     public function catalogue(){
@@ -100,13 +102,15 @@ class FrontController extends Controller
 
     public function vote(){
         $books = Book::where('votes','<',10)->get();
-        $book = Book::orderBy('votes','DESC')->take(1)->first();
+        $winwin = Book::where('votes','=',10);
+        $book = $winwin->orderBy('updated_at','DESC')->take(1)->first();
+        // $book = Book::orderBy('votes','DESC')->take(1)->first();
         return view('pages.vote', compact('books', 'book'));
     }
 
     public function leaderboard(){
 
-        $users = User::orderBy('reviews','DESC')->take(7)->get();
+        $users = User::orderBy('points','DESC')->take(10)->get();
         return view('pages.leaderboard', compact('users'));
 
     }
@@ -116,9 +120,15 @@ class FrontController extends Controller
         //
         $reviews = Review::where('book_id','=', $id)->get();
         $book = Book::find($id);
+        if ($book->reviews == 0){
+            $rating = 0;
+        }
+        else{
+            $rating = $book->rating/$book->reviews;
+        }
         $books = Book::orderBy('votes','DESC')->take(3)->get();
 
-        return view('pages.detailCatalogue', compact('book', 'reviews', 'books'));
+        return view('pages.detailCatalogue', compact('book', 'reviews', 'books','rating'));
     }
 
     public function index()

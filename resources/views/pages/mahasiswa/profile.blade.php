@@ -2,7 +2,9 @@
 
 @section('style')
 <style>
-
+.checked {
+    color: orange;
+  }
 .table {border: none;}
 
 </style>
@@ -22,7 +24,7 @@
                 <div class="card-body little-profile text-center">
                     <div class="pro-img"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" /></div>
                     <h3 class="m-b-0">{{$user->name}}</h3>
-                    <p>{{$user->faculty}} - {{$user->id}}</p>
+                    <p><center>{{$user->faculty}}</center></p>
                     <p>{{$user->points}} points, {{$user->reviews}} Review</p>
                 </div>
             </div>
@@ -59,7 +61,50 @@
                                                     <div class="col-md-9 col-xs-12">
                                                         <p align="justify" style="color:black;">
                                                             <b>{{$row->book->nama_buku}}</b><br>
-                                                            {{-- "bintang"<br> --}}
+                                                            @if ($row->reviews == 0)
+                                                                {{$rating = 0}}
+
+                                                            @else
+                                                                {{$rating = $row->rating/$row->reviews}}
+
+                                                            @endif
+                                                            @if($rating >= 0 && $rating<1)
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @elseif($rating >= 1 && $rating<2)
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @elseif($rating >= 2 && $rating<3)
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @elseif($rating >= 3 && $rating<4)
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @elseif($rating >= 4 && $rating<5)
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @else
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            @endif
                                                             <img src="{{asset('material/images/author.png')}}" alt="">&nbsp;&nbsp;{{$row->book->pengarang}}<br>
                                                             "{{$row->keterangan}}"
                                                             <br>

@@ -21,11 +21,24 @@ class VoteController extends Controller
     public function index()
     {
         //
-        $books = Book::where('votes','<',10)->get();
+        $posts = Book::where('votes','<',10);
+        $books = $posts->whereDoesntHave('votess', function ($query) {
+            $query->where('user_id','=', Sentinel::getUser()->id);
+        })->get();
+
+        $voted = Vote::where('user_id','=',Sentinel::getUser()->id)->get();
+
+        // $buku =
+        // $vote = Vote::where('user_id','=', Sentinel::getUser()->id)->get();
+        // dd($books->votess->first()->user_id);
+        // $c = Book::has('votess')->count();
+        // dd($c);
+        // $vote = Vote::where('book_id','=',$books->id)->first();
+        // dd($books->votess->user_id);
         $winwin = Book::where('votes','=',10);
         $book = $winwin->orderBy('updated_at','DESC')->take(1)->first();
         // dd($book);
-        return view('pages.mahasiswa.vote.index', compact('books', 'book'));
+        return view('pages.mahasiswa.vote.index', compact('books', 'book','voted'));
     }
 
     /**
@@ -78,11 +91,28 @@ class VoteController extends Controller
 
         // dd($data_book);
         $book->fill($data_book)->save();
+        // dd($book->votes);
+        if($book->votes == 10){
+            $vote = Vote::where('book_id','=',$book->id)->get();
+            // dd($vote);
+            foreach($vote as $row){
+                // $iduser = $row;
+                // dd($iduser);
+                $user1 = User::where('id','=',$row->user_id)->first();
+                // dd($user1);
+                $point = $user1->points +15;
+                // dd($point);
+                $bonus = [
+                    'points' =>$point,
+                ];
+                // dd($bonus);
+                $user1->fill($bonus)->save();
 
-        $currentVote = Book::where('votes','=', 10)->get();
-
-
+            }
+            return redirect()->route('mahasiswa.vote.index');
+        }
         return redirect()->route('mahasiswa.vote.index');
+        // return dd($vote);
     }
 
     /**

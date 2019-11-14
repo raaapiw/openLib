@@ -48,11 +48,6 @@
                                                     <div class="col-md-9 col-xs-12">
                                                         <p align="justify" style="color:black;">
                                                             <b>{{$row->nama_buku}}</b><br>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star"></span>
-                                                            <span class="fa fa-star"></span><br>
                                                             <img src="{{asset('material/images/author.png')}}" alt="">&nbsp;&nbsp;{{$row->pengarang}}<br>
                                                         </p>
                                                     </div>
@@ -62,13 +57,26 @@
                                     </td>
                                     <td><center>{{$row->votes}}</center></td>
                                     <td>
-                                        {{-- {{$id = Sentinel::getUser()->id}} --}}
-                                        {{-- @if($row->votes->user_id == $id) --}}
-                                        <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
-                                        {{-- @else --}}
-                                        {{-- <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-danger">Voted</a></center> --}}
+                                        {{-- @if($row->votes == 0) --}}
+                                            <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
 
-                                        {{-- @endif --}}
+                                            {{-- @if() --}}
+                                        {{-- @elseif($row->votes !== 0 && $row->votess == null)
+                                        <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
+
+                                        @else
+                                            @if()
+                                            @foreach($row->votess as $votesss)
+                                                @if($votesss->book_id == $row->id && $votesss->user_id == Sentinel::getUser()->id)
+                                                <center><a href="#" class="btn btn-danger">Voted</a></center>
+                                                @elseif($votesss == null)
+                                                <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
+                                                @else
+
+                                                @endif
+                                                <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
+                                            @endforeach
+                                        @endif --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -92,23 +100,100 @@
         </center>
         <br>
         <br>
+    </div>
+</div>
+<h1>Books you have voted</h1>
+<div class="row">
+    <div class="col-lg-9">
         <div class="card">
-            <center>
-            <div class="card-body">
-                <h3 class="card-title">Winner of the last event</h3>
+            <div class="card-body collapse show">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th></th>
+                                <th style="width:50%"><center>Book's Details</center></th>
+                                <th><center>Votes</center></th>
+                                <th><center>Vote</center></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($voted as $key=>$row)
+                                <tr>
+                                    <td><center>{{$key+1}}</center></td>
+                                    <td>
+                                        @if(isset($row->book->cover))
+                                            <a href=""><img src="{{asset('storage/files/cover/'.$row->book->cover)}}" width="120px" height="180px" alt=""></a>
+                                        @else
+
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <div class="sl-right">
+                                            <div>
+                                                <div class="m-t-20 row">
+                                                    <div class="col-md-9 col-xs-12">
+                                                        <p align="justify" style="color:black;">
+                                                            <b>{{$row->book->nama_buku}}</b><br>
+                                                            <img src="{{asset('material/images/author.png')}}" alt="">&nbsp;&nbsp;{{$row->book->pengarang}}<br>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><center>{{$row->book->votes}}</center></td>
+                                    <td>
+                                        {{-- @if($row->votes == 0) --}}
+                                            <center><a href="#" class="btn btn-danger">Voted</a></center>
+
+                                            {{-- @if() --}}
+                                        {{-- @elseif($row->votes !== 0 && $row->votess == null)
+                                        <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
+
+                                        @else
+                                            @if()
+                                            @foreach($row->votess as $votesss)
+                                                @if($votesss->book_id == $row->id && $votesss->user_id == Sentinel::getUser()->id)
+                                                @elseif($votesss == null)
+                                                <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
+                                                @else
+
+                                                @endif
+                                                <center><a href="{{ route('mahasiswa.vote.detail', $row->id)}}" class="btn btn-success">Vote</a></center>
+                                            @endforeach
+                                        @endif --}}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="col-sm-8">
-                @if(@isset($book->cover))
-                    <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" width="120px" height="180px" alt=""></a>
-                    <p align="center" style="color:black;"><b>{{$book->nama_buku}}</b></p>
-                    <br>
-                    <br>
-                @else
-                @endif
-            </div>
-            </center>
         </div>
     </div>
+    {{-- <div class="card"> --}}
+        <div class="col-md-3">
+        <center>
+        <div class="card-body">
+            <h3 class="card-title">Winner of the last event</h3>
+        </div>
+        <div class="col-sm-8">
+            @if(@isset($book->cover))
+                <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" width="120px" height="180px" alt=""></a>
+                <p align="center" style="color:black;"><b>{{$book->nama_buku}}</b></p>
+                <br>
+                <br>
+            @else
+            @endif
+        </div>
+        </center>
+    </div>
+    {{-- </div> --}}
+</div>
+<div class="col-md-3">
+
 </div>
 @endsection
 

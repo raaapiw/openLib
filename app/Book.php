@@ -25,18 +25,19 @@ class Book extends Model
         'reviews',
         'points',
         'type',
-        'code'
+        'code',
+        'rating'
     ];
 
     public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function vote(){
+    public function votess(){
         return $this->hasMany(Vote::class);
     }
 
-    public function review(){
+    public function reviewss(){
         return $this->hasMany(Review::class);
     }
 }

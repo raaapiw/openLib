@@ -7,7 +7,34 @@
 .checked {
     color: orange;
   }
-  </style>
+  .rating-stars ul {
+  list-style-type:none;
+  padding:0;
+
+  -moz-user-select:none;
+  -webkit-user-select:none;
+}
+.rating-stars ul > li.star {
+  display:inline-block;
+
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+  font-size:2.5em; /* Change the size of the stars */
+  color:#ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+  color:#FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+  color:#FF912C;
+}
+</style>
 @endsection
 
 @section('content')
@@ -19,11 +46,43 @@
         <h1>{{$book->nama_buku}}</h1>
         <p align="justify" style="color:black;">
             <img src="{{asset('material/images/author.png')}}" alt=""> {{$book->pengarang}}&nbsp;&nbsp;<img src="{{asset('material/images/publisher.png')}}" alt="">&nbsp;&nbsp;{{$book->penerbit}} <br>
+            @if($rating >= 0 && $rating<1)
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            @elseif($rating >= 1 && $rating<2)
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            @elseif($rating >= 2 && $rating<3)
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            @elseif($rating >= 3 && $rating<4)
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star"></span>
             <span class="fa fa-star"></span>
+            @elseif($rating >= 4 && $rating<5)
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            @else
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            @endif
             &nbsp;&nbsp;<img src="{{asset('material/images/review.png')}}" alt="">&nbsp;{{$book->reviews}} people review this book <br>
             <b>Synopsis:</b><br>
             {{$book->synopsis}}
@@ -81,6 +140,26 @@
                         <div class="p-2"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" width="50"></div>
                         <div class="comment-text w-100">
                             <p style="color: black;"><b>{{ Sentinel::getUser()->name }}</b></p>
+                            <div class='rating-stars text-center'>
+                                <ul id='stars'>
+                                  <li class='star' title='Poor' data-value='1'>
+                                    <i class='fa fa-star fa-fw'></i>
+                                  </li>
+                                  <li class='star' title='Fair' data-value='2'>
+                                    <i class='fa fa-star fa-fw'></i>
+                                  </li>
+                                  <li class='star' title='Good' data-value='3'>
+                                    <i class='fa fa-star fa-fw'></i>
+                                  </li>
+                                  <li class='star' title='Excellent' data-value='4'>
+                                    <i class='fa fa-star fa-fw'></i>
+                                  </li>
+                                  <li class='star' title='WOW!!!' data-value='5'>
+                                    <i class='fa fa-star fa-fw'></i>
+                                  </li>
+                                </ul>
+                              </div>
+                              <input type="hidden" name="ratingValue" id="rating">
                             <input type="text" name="subject" id="firstName" class="form-control" placeholder="Subject"><br><br>
                             <textarea name="review" id="" rows="10" class="form-control" placeholder="Write your review here..."></textarea>
                             <div class="form-actions">
@@ -96,14 +175,72 @@
 @endsection
 
 @section('script')
+<script>
+$(document).ready(function(){
 
+  /* 1. Visualizing things on Hover - See next part for action on click */
+  $('#stars li').on('mouseover', function(){
+    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+    // Now highlight all the stars that's not after the current hovered star
+    $(this).parent().children('li.star').each(function(e){
+      if (e < onStar) {
+        $(this).addClass('hover');
+      }
+      else {
+        $(this).removeClass('hover');
+      }
+    });
+
+  }).on('mouseout', function(){
+    $(this).parent().children('li.star').each(function(e){
+      $(this).removeClass('hover');
+    });
+  });
+
+
+  /* 2. Action to perform on click */
+  $('#stars li').on('click', function(){
+    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+    var stars = $(this).parent().children('li.star');
+
+    for (i = 0; i < stars.length; i++) {
+      $(stars[i]).removeClass('selected');
+    }
+
+    for (i = 0; i < onStar; i++) {
+      $(stars[i]).addClass('selected');
+    }
+
+    // JUST RESPONSE (Not needed)
+    var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+    console.log(ratingValue);
+    document.getElementById('rating').value = ratingValue;
+    // $.post('/getOrgById', myJsonData, function(response) {
+    // //handle response
+    // });
+    // $.ajax({
+    //     method: 'post',
+    //     url: '/mahasiswa/review/store',
+    //     data: {rate : ratingValue},
+    //     success: function(){
+    //         console.log("sukses");
+    //     }
+    // });
+    // var msg = "";
+    // if (ratingValue > 1) {
+    //     msg = "Thanks! You rated this " + ratingValue + " stars.";
+    // }
+    // else {
+    //     msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+    // }
+    // responseMessage(msg);
+
+  });
+
+
+});
+</script>
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{ asset('material/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
 @endsection
-{{-- <div class="card">
-    <img class="card-img-top img-responsive" src="{{asset('material/images/big/img2.jpg')}}" alt="Card image cap">
-    <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <a href="#" class="btn btn-warning">Review</a>
-    </div>
-</div> --}}

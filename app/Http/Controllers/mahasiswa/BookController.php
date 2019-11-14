@@ -46,7 +46,8 @@ class BookController extends Controller
 
         // dd($uploadedFile);
         $text = str_replace(' ', '', $request->title);
-        $uploadedFileName = $text . '-' . $uploadedFile->getClientOriginalName();;
+        $uploadedFileName = $uploadedFile->getClientOriginalName();;
+        // dd($uploadedFileName);
 
         if (Storage::exists($uploadedFileName)) {
             Storage::delete($uploadedFileName);
