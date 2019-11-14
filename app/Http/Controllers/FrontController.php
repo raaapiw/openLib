@@ -110,7 +110,7 @@ class FrontController extends Controller
 
     public function leaderboard(){
 
-        $users = User::orderBy('reviews','DESC')->take(7)->get();
+        $users = User::orderBy('points','DESC')->take(10)->get();
         return view('pages.leaderboard', compact('users'));
 
     }

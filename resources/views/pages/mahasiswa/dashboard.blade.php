@@ -140,7 +140,7 @@
                         @if($row->user->gender == 'M')
                         <div class="p-2"><img src="{{ asset('material/images/users/male.png')}}" alt="user" width="50"></div>
                         @else
-                        <div class="pro-img"><img src="{{ asset('material/images/users/female.png')}}" alt="user" /></div>
+                        <div class="pro-img"><img src="{{ asset('material/images/users/female.png')}}" alt="user" width="50"/></div>
                         @endif
                         <div class="comment-text w-100">
                             <p style="color: black;"><b>{{$row->user->name}}</b> for <b><u>{{$row->book->nama_buku}}</u></b></p>

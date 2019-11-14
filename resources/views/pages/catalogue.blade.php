@@ -4,7 +4,10 @@
 <style>
 .checked {
     color: orange;
-  }
+  },
+  .hide {
+			visibility: hidden;
+		}
 </style>
 <link href= "{{asset('material/plugins/Magnific-Popup-master/dist/magnific-popup.css')}}" rel="stylesheet">
 @endsection
@@ -109,17 +112,19 @@
             <tbody>
                 @foreach($books as $key=>$row)
                 <tr>
+                    <div class="hide">@if ($row->reviews == 0)
+                            {{$rating = 0}}
+
+                        @else
+                            {{$rating = $row->rating/$row->reviews}}
+
+                        @endif</div>
+
                     <td><img src="{{asset('storage/files/cover/'.$row->cover)}}" width="120px" height="180px" alt=""></td>
                     <td>
                         <p align="justify" style="color:black;">
                             <b>{{$row->nama_buku}}</b><br>
-                            @if ($row->reviews == 0)
-                                {{$rating = 0}}
 
-                            @else
-                                {{$rating = $row->rating/$row->reviews}}
-
-                            @endif
                             @if($rating >= 0 && $rating<1)
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
