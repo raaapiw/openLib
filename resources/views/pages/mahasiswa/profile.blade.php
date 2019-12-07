@@ -12,9 +12,18 @@
 @endsection
 
 @section('content')
-<h1 style="font-size:35px">{{Sentinel::getUser()->name}}</h1>
-<div class="row">
-    <div class="col-lg-3">
+<center>
+<h1 style="font-size:35px" style="color:black;">Welcome, {{Sentinel::getUser()->name}}</h1>
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+            <img src="{{ asset(Sentinel::getUser()->image)}}" width="250px" /> <br>
+            <h3 class="m-b-0">{{$user->name}}</h3>
+            <hr style="border: 1px solid black;">
+            <p><center>{{$user->faculty}} - {{$user->faculty}}</center></p>
+            <p> <img src="{{ asset('material/images/mission/target.png')}}" width="20px"> 4 mission
+                <img src="{{ asset('material/images/mission/review.png')}}" width="20px"> {{$user->reviews}} reviews
+                <img src="{{ asset('material/images/mission/successs.png')}}" width="20px"> {{$user->points}} points
+            </p>
         <div class="card">
             <div class="card-body">
                 <!-- ============================================================== -->
@@ -22,15 +31,18 @@
                 <!-- ============================================================== -->
                 <img class="card-img-top" src="{{ asset('material/images/background/profile-bg.jpg')}}" alt="Card image cap">
                 <div class="card-body little-profile text-center">
-                    <div class="pro-img"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" /></div>
-                    <h3 class="m-b-0">{{$user->name}}</h3>
+                    {{-- <div class="pro-img"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" /></div> --}}
+                    {{-- <h3 class="m-b-0">{{$user->name}}</h3> --}}
                     <p><center>{{$user->faculty}}</center></p>
-                    <p>{{$user->points}} points, {{$user->reviews}} Review</p>
+                    <p> <img src="{{ asset('material/images/mission/target.png')}}" width="20px"> 4 mission
+                        <img src="{{ asset('material/images/mission/review.png')}}" width="20px"> {{$user->reviews}} reviews
+                        <img src="{{ asset('material/images/mission/successs.png')}}" width="20px"> {{$user->points}} points
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-8">
+    {{-- <div class="col-lg-8">
         <div class="card">
             <div class="card-body collapse show">
                 <div class="table-responsive">
@@ -123,9 +135,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
-
+</center>
 @endsection
 
 @section('script')

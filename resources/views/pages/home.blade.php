@@ -1,7 +1,9 @@
 @extends('layouts.app3')
 
 @section('style')
-
+<style>
+   modal.modal({ show:true, backdrop: false });
+</style>
 <link href= "{{asset('material/plugins/Magnific-Popup-master/dist/magnific-popup.css')}}" rel="stylesheet">
 @endsection
 
@@ -196,6 +198,18 @@
         </div>
     </div>
 </div>
+{{-- <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal">&times;</button> <br><br><br>
+                <p align=" center"><img src="{{ asset('material/images/console.png')}}" width="100px"></p>
+                    <p align=" center" style="color:black;font-size:160%;"><b>Finish your mission, and get free books</b></p>
+                    <p align=" center"><button type="button" class="btn btn-warning" data-dismiss="modal">Close</button></p>
+            </div>
+        </div>
+    </div>
+</div> --}}
 @endsection
 
 @section('script')

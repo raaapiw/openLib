@@ -169,6 +169,10 @@
                                                         <input type="text" name="name" class="form-control" id="code">
                                                     </div>
                                                     <div class="form-group">
+                                                        <label for="code" class="control-label">NIM:</label>
+                                                        <input type="text" name="nim" class="form-control" id="code">
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="title" class="control-label">Gender:</label>
                                                         <label class="custom-control custom-radio">
                                                             <input id="radio5" name="gender" type="radio" value="M" class="custom-control-input">
