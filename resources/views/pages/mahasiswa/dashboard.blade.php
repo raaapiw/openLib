@@ -199,7 +199,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button> <br><br><br>
                 <p align=" center"><img src="{{ asset('material/images/console.png')}}" width="250px"></p>
                 <p align=" center" style="color:black;font-size:160%;"><b>Finish your mission, and get free books</b></p>
-                <p align=" center"><a href="" class="btn btn-danger">Go to Mission</a></p>
+                <p align=" center"><a href="{{ route('mahasiswa.profile', Sentinel::getUser()->id)}}" class="btn btn-danger">Go to Mission</a></p>
             </div>
         </div>
         <!-- /.modal-content -->
