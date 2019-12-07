@@ -38,7 +38,7 @@
                                 <tr>
                                     <td><img src="{{ asset('material/images/mission/mission.jpg')}}" width="120px" height="180px" alt=""></td>
                                     <td>
-                                        <h3 style="font-weight: bold"">Review some book as many as posible, and win 'Elanor & Park' by Raibow Rowell!</h3>
+                                        <h3 style="font-weight: bold">Review some book as many as posible, and win 'Elanor & Park' by Raibow Rowell!</h3>
                                         <p><img src="{{ asset('material/images/mission/treasure.png')}}" width="20px" alt=""> 'Elanor & Park' by Raibow Rowell</p>
                                         <p><img src="{{ asset('material/images/mission/deadline.png')}}" width="20px" alt=""> 25 December 2019</p>
                                         <p><b style="color:black;">Rules:</b> <br> Review some books as many as possiblebefore due date. Winner will be choosen by the amount of book that have been reviewedand the quality of review itself.</p>
