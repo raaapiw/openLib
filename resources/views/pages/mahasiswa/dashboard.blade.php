@@ -110,7 +110,7 @@
         <div class="card">
             <center>
             <div class="card-body">
-                <h3 class="card-title">Winner of the last event</h3>
+                <h3 class="card-title">Winner Book</h3>
             </div>
             <div class="col-sm-8">
                 @if(@isset($winner->cover))
@@ -138,22 +138,7 @@
                 @foreach($reviews as $key=>$row)
                     <div class="d-flex flex-row comment-row">
                         @if($row->user->gender == 'M')
-                        <div id="myModal1" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button> <br><br><br>
-                                        <div class="row">
-                                            <div class="col-md-3"><img src="{{ asset('material/images/mission/success.png')}}" width="150px" alt=""></div>
-                                            <div class="col-md-9"><h3 style="font-weight: bold;">Congratulations!</h3> Kim doyoung (1), the winner of the’elanor and park’ book in our last event please go to our staf to claim your prize!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                        <div class="p-2"><img src="{{ asset('material/images/users/male.png')}}" alt="default" data-toggle="modal" data-target="#myModal1" width="50"></div>
+                        <div class="p-2"><img src="{{ asset('material/images/users/male.png')}}" alt="user" width="50"></div>
                         @else
                         <div class="pro-img"><img src="{{ asset('material/images/users/female.png')}}" alt="user" width="50"/></div>
                         @endif
@@ -171,19 +156,34 @@
     <div class="col-lg-3">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Member of The Week</h4>
+                <h4 class="card-title">Winner of the last Event</h4>
                 <!-- ============================================================== -->
                 <!-- To do list widgets -->
                 <!-- ============================================================== -->
                 <img class="card-img-top" src="{{ asset('material/images/background/profile-bg.jpg')}}" alt="Card image cap">
+                <div id="myModal1" class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <div class="row">
+                                    <div class="col-md-3"><img src="{{ asset('material/images/mission/success.png')}}" width="105px" alt=""></div>
+                                    <div class="col-md-9"><h3 style="font-weight: bold;">Congratulations!</h3> <p align="justify">{{$user->name}} ({{$user->nim}}), the winner of the’elanor and park’ book in our last event please go to our staf to claim your prize!</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
                 <div class="card-body little-profile text-center">
                     @if($user->gender == 'M')
-                    <div class="pro-img"><img src="{{ asset('material/images/users/male.png')}}"  alt="default" data-toggle="modal" data-target=".bs-example-modal-lg"/></a></div>
+                    <div class="pro-img"><img src="{{ asset('material/images/users/male.png')}}"  alt="default" data-toggle="modal" data-target="#myModal1"/></a></div>
                     @else
-                    <div class="pro-img"><img src="{{ asset('material/images/users/female.png')}}" alt="user"/></div>
+                    <div class="pro-img"><img src="{{ asset('material/images/users/female.png')}}" alt="default" data-toggle="modal" data-target="#myModal1"/></div>
                     @endif
                     <h3 class="m-b-0">{{$user->name}}</h3>
-                    <p><center>{{$user->faculty}}</center></p>
+                    <p><center>{{$user->faculty}} - {{$user->nim}}</center></p>
                     <p>{{$user->points}} points, {{$user->reviews}} Review</p>
                 </div>
             </div>
