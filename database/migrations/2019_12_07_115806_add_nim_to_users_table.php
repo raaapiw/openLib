@@ -15,7 +15,7 @@ class AddNimToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('nim');
+            $table->integer('nim')->nullable();
         });
     }
 
