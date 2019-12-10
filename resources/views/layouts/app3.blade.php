@@ -169,8 +169,8 @@
                                                         <input type="text" name="name" class="form-control" id="code">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="code" class="control-label">NIM:</label>
-                                                        <input type="text" name="nim" class="form-control" id="code">
+                                                        <label class="control-label">NIM:</label>
+                                                        <input type="number" name="nim" class="form-control" >
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="title" class="control-label">Gender:</label>
