@@ -49,6 +49,9 @@
                                                         <p align="justify" style="color:black;">
                                                             <b>{{$row->nama_buku}}</b><br>
                                                             <img src="{{asset('material/images/author.png')}}" alt="">&nbsp;&nbsp;{{$row->pengarang}}<br>
+                                                            <p style="color:black;"><b>Synopsis :</b> <br>
+                                                                {{$row->synopsis}}
+                                                            </p>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -137,6 +140,9 @@
                                                         <p align="justify" style="color:black;">
                                                             <b>{{$row->book->nama_buku}}</b><br>
                                                             <img src="{{asset('material/images/author.png')}}" alt="">&nbsp;&nbsp;{{$row->book->pengarang}}<br>
+                                                            <p style="color:black;"><b>Synopsis :</b> <br>
+                                                                {{$row->book->synopsis}}
+                                                            </p>
                                                         </p>
                                                     </div>
                                                 </div>

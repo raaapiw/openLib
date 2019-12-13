@@ -40,7 +40,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-3">
-        <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" alt=""></a>
+        <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" alt="" width="240px" height="360px"></a>
     </div>
     <div class="col-lg-9">
         <h1>{{$book->nama_buku}}</h1>

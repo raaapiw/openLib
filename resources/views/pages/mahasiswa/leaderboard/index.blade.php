@@ -11,15 +11,42 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
         <center>
-            <h1 style="font-size:80px">LEADERBOARD</h1> <br>
-            <img src="{{asset('material/images/tropi.png')}}" alt=""height="200px" width="200px">
+            <h1 style="font-size:50px">LEADERBOARD</h1> <br>
             <br>
             <br>
+            <img src="{{asset('material/images/tropi.png')}}" alt=""height="180px" width="180px">
         </center>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Winner of the last Event</h4>
+                <!-- ============================================================== -->
+                <!-- To do list widgets -->
+                <!-- ============================================================== -->
+                {{-- <img class="card-img-top" src="{{ asset('material/images/background/profile-bg.jpg')}}" alt="Card image cap"> --}}
+
+                <div class="card-body little-profile text-center">
+                    @if($user->gender == 'M')
+                    <div><img src="{{ asset('material/images/users/male.png')}}"  alt="default" width="100px"/></a></div>
+                    @else
+                    <div><img src="{{ asset('material/images/users/female.png')}}" alt="default" width="100px"/></div>
+                    @endif
+                    <h3 class="m-b-0">{{$user->name}}</h3>
+                    <p><center>{{$user->faculty}} - {{$user->nim}}</center></p>
+                    <p>{{$user->points}} points, {{$user->reviews}} Review</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
         <div class="card card-outline-info">
             <div class="card-body">
                 <div class="table-responsive">

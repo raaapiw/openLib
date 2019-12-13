@@ -39,7 +39,7 @@ class RegisterController extends Controller
         //
         $data = [
             'name'      => $request->name,
-            'nim'      => $request->name,
+            'nim'      => $request->nim,
             'gender'    => $request->gender,
             'email'     => $request->email,
             'username'  => $request->username,
