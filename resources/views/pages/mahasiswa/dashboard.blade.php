@@ -1,7 +1,26 @@
 @extends('layouts.app2')
 
 @section('style')
+<style>
+.modal {
+  text-align: center;
+}
 
+@media screen  {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+</style>
 <link href= "{{asset('material/plugins/Magnific-Popup-master/dist/magnific-popup.css')}}" rel="stylesheet">
 @endsection
 
@@ -212,8 +231,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal">&times;</button> <br><br><br>
-                <p align=" center"><img src="{{ asset('material/images/console.png')}}" width="250px"></p>
-                <p align=" center" style="color:black;font-size:160%;"><b>Finish your mission, and get free books</b></p>
+                <p align=" center"><img src="{{ asset('material/images/console.png')}}" width="150px"></p>
+                <p align=" center" style="color:black;font-size:30px;"><b>Finish your mission, and get free books</b></p>
                 <p align=" center"><a href="{{ route('mahasiswa.profile', Sentinel::getUser()->id)}}" class="btn btn-danger">Go to Mission</a></p>
             </div>
         </div>
