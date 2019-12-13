@@ -29,7 +29,7 @@
         <form action="{{ route('mahasiswa.vote.store')}}" method="POST" enctype="multipart/form-data">
         <center>
             <input type="hidden" name="book_id" value="{{$book->id}}">
-            <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" alt=""></a>
+            <a href=""><img src="{{asset('storage/files/cover/'.$book->cover)}}" alt="" width="240px" height="360px"></a>
             <br>
             <br>
             <div class="form-actions">
