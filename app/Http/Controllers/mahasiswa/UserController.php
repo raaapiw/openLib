@@ -95,7 +95,8 @@ class UserController extends Controller
     public function leaderboard(){
 
         $users = User::orderBy('points','DESC')->take(10)->get();
-        return view('pages.mahasiswa.leaderboard.index', compact('users'));
+        $user = User::orderBy('points','DESC')->take(1)->first();
+        return view('pages.mahasiswa.leaderboard.index', compact('users', 'user'));
     }
 
     public function profile($id){
