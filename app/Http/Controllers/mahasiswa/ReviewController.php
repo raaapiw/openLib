@@ -78,6 +78,7 @@ class ReviewController extends Controller
             'book_id' => $request->book_id,
             'keterangan' =>$request->subject,
             'review'=> $request->review,
+            'rating'=> $request->ratingValue
 
         ];
         // dd($data);
